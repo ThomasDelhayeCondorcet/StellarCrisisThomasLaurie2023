@@ -51,133 +51,141 @@
         <label>Delay first update :</label>
         <input type="text" id="delay_first_update" name="delay_first_update" required><br> <!-- Table series : udelay -->
 
-        <label>Nombre de Trade-Ins de technologies restreintes:</label>
-        <input type="number" id="trade_ins_technologies_restrictees" name="trade_ins_technologies_restrictees" required><br>
+        <label>Number of restricted technologies allowed:</label>
+        <input type="number" id="technologies_restricted_allowed" name="technologies_restricted_allowed" required><br> <!-- Table series : availrestrict -->
 
-        <label>Diviseur de portée Stargate:</label>
-        <input type="number" id="diviseur_portee_stargate" name="diviseur_portee_stargate" required><br>
+        <label>Number of Trade-Ins of restricted technologies:</label>
+        <input type="number" id="trade_ins_technologies_restricted" name="trade_ins_technologies_restricted" required><br> <!-- Table series : tradeinrestrict -->
 
-        <label>Diviseur de portée Jumpgate:</label>
-        <input type="number" id="diviseur_portee_jumpgate" name="diviseur_portee_jumpgate" required><br>
+        <label>Stargate'range divider:</label>
+        <input type="number" id="divider_range_stargate" name="divider_range_stargate" required><br> <!-- Table series : stargate -->
 
-        <label>Nombre maximum de vaisseau par joueur:</label>
-        <input type="number" id="nombre_max_vaisseau_joueur" name="nombre_max_vaisseau_joueur" min="0"><br>
+        <label>Jumpgate'range divider:</label>
+        <input type="number" id="divider_range_jumpgate" name="divider_range_jumpgate" required><br> <!-- Table series : jumpgate -->
 
-        <label>Pertes lors d'activation des Engineer, Jumpgate, Morpher et Carrier:</label><br>
-        <input type="number" id="pertes_engineer" name="pertes_engineer" required>
-        <input type="number" id="pertes_jumpgate" name="pertes_jumpgate" required>
-        <input type="number" id="pertes_morpher" name="pertes_morpher" required>
-        <input type="number" id="pertes_carrier" name="pertes_carrier" required><br>
+        <label>Maximum number of ships per player:</label>
+        <input type="number" id="max_ship_player" name="max_ship_player" min="0"><br> <!-- Table series : maxship -->
 
-        <label>Coûts de construction et de maintenance des Morphers, Builders, Jumpgates et Carriers:</label><br>
-        <label>Morphers :</label><br>
-        <input type="number" id="cout_construction_morpher" name="cout_construction_morpher" required>
-        <input type="number" id="cout_maintenance_morpher" name="cout_maintenance_morpher" required><br>
-        <label>Builder :</label><br>
-        <input type="number" id="cout_construction_builder" name="cout_construction_builder" required>
-        <input type="number" id="cout_maintenance_builder" name="cout_maintenance_builder" required><br>
+        <label>Loss when Engineer, Jumpgate, Morpher and Carrier activation:</label><br>
+        <label>Engineer :</label><br>
+        <input type="number" id="loss_engineer" name="loss_engineer" required> <!-- Table series : engloss -->
         <label>Jumpgate :</label><br>
-        <input type="number" id="cout_construction_jumpgate" name="cout_construction_jumpgate" required>
-        <input type="number" id="cout_maintenance_jumpgate" name="cout_maintenance_jumpgate" required><br>
+        <input type="number" id="loss_jumpgate" name="loss_jumpgate" required> <!-- Table series : jumploss -->
+        <label>Morphers :</label><br>
+        <input type="number" id="loss_morpher" name="loss_morpher" required> <!-- Table series : morphloss -->
         <label>Carrier :</label><br>
-        <input type="number" id="cout_construction_carrier" name="cout_construction_carrier" required>
-        <input type="number" id="cout_maintenance_carrier" name="cout_maintenance_carrier" required><br>
+        <input type="number" id="loss_carrier" name="loss_carrier" required><br> <!-- Table series : carloss -->
 
-        <label>Minimum et Range pour les moyennes de ressources:</label><br>
-        <label>Agriculture:</label>
-        <input type="number" id="agriculture_minimum" name="agriculture_minimum" required>
-        <input type="number" id="agriculture_range" name="agriculture_range" required><br>
+        <label>Construction and maintenance costs of Morphers, Builders, Jumpgates et Carriers:</label><br>
+        <label>Morphers :</label><br>
+        <input type="number" id="cost_construction_morpher" name="cost_construction_morpher" required> <!-- Table series : morpherbuild -->
+        <input type="number" id="cost_maintenance_morpher" name="cost_maintenance_morpher" required><br> <!-- Table series : morphermaint -->
+        <label>Builder :</label><br>
+        <input type="number" id="cost_construction_builder" name="cost_construction_builder" required> <!-- Table series : builderbuild -->
+        <input type="number" id="cost_maintenance_builder" name="cost_maintenance_builder" required><br> <!-- Table series : buildermaint -->
+        <label>Jumpgate :</label><br>
+        <input type="number" id="cost_construction_jumpgate" name="cost_construction_jumpgate" required> <!-- Table series : jumpgatebuild -->
+        <input type="number" id="cost_maintenance_jumpgate" name="cost_maintenance_jumpgate" required><br> <!-- Table series : jumpgatemaint -->
+        <label>Carrier :</label><br>
+        <input type="number" id="cost_construction_carrier" name="cost_construction_carrier" required> <!-- Table series : carrierbuild -->
+        <input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" required><br> <!-- Table series : carriermaint -->
 
-        <label>Minerai:</label>
-        <input type="number" id="minerai_minimum" name="minerai_minimum" required>
-        <input type="number" id="minerai_range" name="minerai_range" required><br>
+        <label>Minimum and Range for resource averages:</label><br>
+
+        <label>Farming:</label>
+        <input type="number" id="farming_minimum" name="farming_minimum" required> <!-- Table series : avgag -->
+        <input type="number" id="farming_range" name="farming_range" required><br> <!-- Table series : rangeag -->
+
+        <label>Mineral:</label>
+        <input type="number" id="mineral_minimum" name="mineral_minimum" required> <!-- Table series : avgmin -->
+        <input type="number" id="mineral_range" name="mineral_range" required><br> <!-- Table series : rangemin -->
 
         <label>Fuel:</label>
         <input type="number" id="fuel_minimum" name="fuel_minimum" required> <!-- Table series : avgfuel -->
         <input type="number" id="fuel_range" name="fuel_range" required><br> <!-- Table series : rangefuel -->
 
-        <label>Agriculture, Minerai et Fuel du HomeWorld:</label><br>
-        <input type="number" id="agriculture_homeworld" name="agriculture_homeworld" required>
-        <input type="number" id="minerai_homeworld" name="minerai_homeworld" required>
-        <input type="number" id="fuel_homeworld" name="fuel_homeworld" required><br>
+        <label>Farming, Mineral and Fuel of the HomeWorld:</label><br>
+        <input type="number" id="farming_homeworld" name="farming_homeworld" required> <!-- Table series : homeag -->
+        <input type="number" id="mineral_homeworld" name="mineral_homeworld" required> <!-- Table series : homemin -->
+        <input type="number" id="fuel_homeworld" name="fuel_homeworld" required><br> <!-- Table series : homefuel -->
 
-        <label>Coût pour construire une planète:</label>
-        <input type="number" id="cout_construction_planete" name="cout_construction_planete" required><br>
+        <label>Cost of building a planet:</label>
+        <input type="number" id="cost_building_planete" name="cost_building_planete" required><br> <!-- Table series : plabuild -->
 
-        <label>Population minimum pour pouvoir construire un vaisseau:</label>
-        <input type="number" id="population_min_construct_vaisseau" name="population_min_construct_vaisseau" required><br>
+        <label>Minimum population to build a ship:</label>
+        <input type="number" id="population_min_build_ship" name="population_min_build_ship" required><br> <!-- Table series : minbuild -->
 
-        <label for="nombre_max_parties_cours">Nombre maximum de parties en cours pour cette série:</label>
-        <input type="number" id="nombre_max_parties_cours" name="nombre_max_parties_cours" required><br>
+        <label>Maximum number of current games for this series:</label>
+        <input type="number" id="number_max_current_game" name="number_max_current_game" required><br> <!-- Table series : max -->
 
-        <label for="spawn_first">Spawn First:</label>
-        <input type="text" id="spawn_first" name="spawn_first" required><br>
+        <label>Spawn First:</label>
+        <input type="text" id="spawn_first" name="spawn_first" required><br> <!-- Table series : spawnfirst -->
 
-        <label for="bridier_actif">Bridier actif:</label>
-        <input type="text" id="bridier_actif" name="bridier_actif"><br>
+        <label>active bridier:</label>
+        <input type="text" id="active_bridier" name="active_bridier"><br> <!-- Table series : bridier -->
 
-        <label for="alliance_trade_truce">Permet Alliance/Trade/Truce:</label>
-        <select id="alliance_trade_truce" name="alliance_trade_truce" required>
+        <label>Allow Alliance/Trade/Truce:</label>
+        <select id="alliance_trade_truce" name="alliance_trade_truce" required> <!-- Table series : blood -->
         <option value="yes">Yes</option>
         <option value="no">No</option>
         <option value="only_trade_truce">Only Trade/Truce</option>
     </select><br>
 
-    <label>Nombre maximum d'alliés:</label>
-    <input type="number" id="nombre_max_allies" name="nombre_max_allies" required><br>
+    <label>Maximum number of allies:</label>
+    <input type="number" id="number_max_allies" name="number_max_allies" required><br> <!-- Table series : maxallies -->
 
-    <label>Permet Surrender/Draw:</label>
-    <select id="permet_surrender_draw" name="permet_surrender_draw" required>
+    <label>Allow Surrender/Draw:</label>
+    <select id="allow_surrender_draw" name="allow_surrender_draw" required> <!-- Table series : surrdraw -->
         <option value="yes">Yes</option>
         <option value="no">No</option>
     </select><br>
 
-    <label>Liste des joueurs de la partie visible dans la liste des parties:</label>
-    <input type="text" id="joueurs_visibles" name="joueurs_visibles" required><br>
+    <label>List of players of the game visible in the game list:</label>
+    <input type="text" id="viewable_players" name="viewable_players" required><br> <!-- Table series : visp -->
 
-    <label>Les Cloakers sont invisibles quand fabriqués ?</label>
-    <select id="cloakers_invisibles" name="cloakers_invisibles" required>
+    <label>Cloakers are invisibles when built ?</label>
+    <select id="cloakers_invisibles" name="cloakers_invisibles" required> <!-- Table series : initcloak -->
         <option value="yes">Yes</option>
         <option value="no">No</option>
     </select><br>
 
-    <label>Les constructions en attente sont visibles ?</label>
-    <select id="constructions_visibles" name="constructions_visibles" required>
+    <label>Are the construction waiting visible?</label>
+    <select id="constructions_visible" name="constructions_visible" required> <!-- Table series : vis -->
         <option value="yes">Yes</option>
         <option value="no">No</option>
     </select><br>
 
     <label>Layout:</label>
-    <select id="layout" name="layout" required>
-        <option value="traditionnel">Traditionnel</option>
-        <option value="mirroir">Mirroir (2 joueurs uniquement)</option>
+    <select id="layout" name="layout" required> <!-- Table series : layout -->
+        <option value="Classic">Classic</option>
+        <option value="mirror">Mirror (Only 2 Player)</option>
     </select><br>
 
-    <label>Aveugle jusqu'au début de la partie ?</label>
-    <select id="aveugle_jusquau_debut" name="aveugle_jusquau_debut" required>
+    <label>Blind until the game starts?</label>
+    <select id="blind_until_start" name="blind_until_start" required> <!-- Table series : blind -->
         <option value="yes">Yes</option>
         <option value="no">No</option>
     </select><br>
 
-    <label>Nombre de joueurs maximum dans la partie:</label>
-    <input type="number" id="nombre_max_joueurs" name="nombre_max_joueurs" required><br>
+    <label>Maximum number of players in the game:</label>
+    <input type="number" id="number_max_player" name="number_max_player" required><br> <!-- Table series : pmax -->
 
-    <label>Minimum et Maximum du nombre de systèmes par joueur:</label><br>
-    <input type="number" id="nombre_systemes_min" name="nombre_systemes_min" required>
-    <input type="number" id="nombre_systemes_max" name="nombre_systemes_max" required><br>
+    <label>Minimum and maximum number of systems per player:</label><br>
+    <input type="number" id="number_systems_min" name="number_systems_min" required> <!-- Table series : smin -->
+    <input type="number" id="number_systems_max" name="number_systems_max" required><br> <!-- Table series : smax -->
 
-    <label for="agriculture_ratio_max">Agriculture ratio maximum:</label>
-    <input type="number" id="agriculture_ratio_max" name="agriculture_ratio_max" required><br>
+    <label>Farming ratio maximum:</label>
+    <input type="number" id="farming_ratio_max" name="farming_ratio_max" required><br> <!-- Table series : maxag -->
 
-    <label>Multiplicateur de technologie:</label>
-    <input type="number" id="multiplicateur_technologie" name="multiplicateur_technologie" required><br>
+    <label>Technology multiplier:</label>
+    <input type="number" id="technology_multiplier:" name="technology_multiplier" required><br> <!-- Table series : tmult -->
 
-    <label>Niveau technologique initial:</label>
-    <input type="number" id="niveau_technologique_initial" name="niveau_technologique_initial" required><br>
+    <label>Initial technological level:</label>
+    <input type="number" id="initial_technological_level" name="initial_technological_level" required><br> <!-- Table series : inittech -->
 
-    <label>Nombre de victoires minimales et maximales pour rejoindre:</label><br>
-    <input type="number" id="victoires_minimales" name="victoires_minimales" required>
-    <input type="number" id="victoires_maximales" name="victoires_maximales" required><br>
+    <label>Minimum and maximum wins to join:</label><br>
+    <input type="number" id="minimum_wins" name="minimum_wins" required> <!-- Table series : wins -->
+    <input type="number" id="maximum_wins" name="maximum_wins" required><br> <!-- Table series : winmax -->
 
     <input type="submit" value="Create series">
     </form>

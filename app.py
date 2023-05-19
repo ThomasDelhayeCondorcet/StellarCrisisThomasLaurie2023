@@ -62,6 +62,8 @@ def AdminPage():
 @app.route("/CreateSeries", methods=['GET', 'POST'])
 def CreateSeries():
     if request.method == 'POST':
+        #code pour insert
+
         return render_template("AdminPage.html")
     else:
         return render_template("CreateSeries.html")
