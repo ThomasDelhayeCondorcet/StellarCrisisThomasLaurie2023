@@ -10,59 +10,46 @@
         <div class="topNav">
             <a href="CreateSeries">Create series</a>
             <a href="ListSeries">List series</a>
-            <a href="ModifieSeries">Modifie series</a>
+            <a href="ModifySeries">Modify series</a>
             <a href="CheckEmpire">Check empire</a>
             <a href="LogOut">Log Out</a>
         </div>
   </header>
     <br>
     <form action="" method="post">
-        <label>Name of the game</label>
+        <label>Name of the game</label> <!-- Table series : sname -->
         <input type="text" id="name" name="name" required><br>
 
-        <label>Color of the game</label>
+        <label>Color of the game</label> <!-- Table series : color -->
         <input type="color" id="color" name="color" required><br>
 
-        <label>Short description</label>
+        <label>Short description</label> <!-- Table series : descr -->
         <input type="text" id="short_descr" name="short_descr"><br>
 
         <label>Long description</label>
-        <input type="text" id="long_descr" name="long_descr"><br>
+        <input type="text" id="long_descr" name="long_descr"><br> <!-- Table series : fulldesc -->
 
-        <label>Update Time (nombre + heure/minute):</label>
-        <input type="text" id="update_time" name="update_time" required><br>
+        <label>Update Time :</label>
+        <input type="text" id="update_time" name="update_time" required><br> <!-- Table series : utime -->
 
-        <label>time limits (nombre + jours/heure/minute):</label>
-        <input type="text" id="time_limite" name="time_limite" required><br>
+        <label>Time limits :</label>
+        <input type="text" id="time_limit" name="time_limit" required><br> <!-- Table series : timelimit -->
 
-        <label>Overtime Update Time (nombre + heure/minute):</label>
-        <input type="text" id="overtime_update_time" name="overtime_update_time" required><br>
+        <label>Overtime Update Time :</label>
+        <input type="text" id="overtime_update_time" name="overtime_update_time" required><br> <!-- Table series : overtime -->
 
         <label>Updates on week-end:</label>
-        <input type="radio" id="updates_weekend_oui" name="updates_weekend" value="yes" required>
+        <input type="radio" id="updates_weekend_yes" name="updates_weekend" value="yes" required> <!-- Table series : weekend -->
         <label>Yes</label>
-        <input type="radio" id="updates_weekend_non" name="updates_weekend" value="no">
+        <input type="radio" id="updates_weekend_no" name="updates_weekend" value="no">
         <label>No</label><br>
 
         <label>Updates from ... to ...:</label>
-        <input type="text" id="updates_periode_de" name="updates_periode_de" placeholder="From" required>
-        <input type="text" id="updates_periode_a" name="updates_periode_a" placeholder="To" required><br>
+        <input type="text" id="updates_period_from" name="updates_period_from" placeholder="From" required> <!-- Table series : fromhr -->
+        <input type="text" id="updates_period_to" name="updates_periode_to" placeholder="To" required><br> <!-- Table series : tohr -->
 
-        <label>Delay first update (nombre + jours/heure/minute):</label>
-        <input type="text" id="delay_premiere_update" name="delay_premiere_update" required><br>
-
-        <label>Technologie list:</label><br>
-        <input type="checkbox" id="technologie_developpee" name="technologie_developpee" value="developpee">
-        <label>Développée</label>
-        <input type="checkbox" id="technologie_permise" name="technologie_permise" value="permise">
-        <label>Permises</label>
-        <input type="checkbox" id="technologie_restricte" name="technologie_restricte" value ="restricte">
-        <label>Restreintes</label>
-        <input type="checkbox" id="technologie_interdite" name="technologie_interdite" value="interdite">
-        <label>Interdites</label><br>
-
-        <label>Nombre de technologies restreintes autorisées:</label>
-        <input type="number" id="technologies_restrictees_autorisees" name="technologies_restrictees_autorisees" required><br>
+        <label>Delay first update :</label>
+        <input type="text" id="delay_first_update" name="delay_first_update" required><br> <!-- Table series : udelay -->
 
         <label>Nombre de Trade-Ins de technologies restreintes:</label>
         <input type="number" id="trade_ins_technologies_restrictees" name="trade_ins_technologies_restrictees" required><br>
@@ -106,8 +93,8 @@
         <input type="number" id="minerai_range" name="minerai_range" required><br>
 
         <label>Fuel:</label>
-        <input type="number" id="fuel_minimum" name="fuel_minimum" required>
-        <input type="number" id="fuel_range" name="fuel_range" required><br>
+        <input type="number" id="fuel_minimum" name="fuel_minimum" required> <!-- Table series : avgfuel -->
+        <input type="number" id="fuel_range" name="fuel_range" required><br> <!-- Table series : rangefuel -->
 
         <label>Agriculture, Minerai et Fuel du HomeWorld:</label><br>
         <input type="number" id="agriculture_homeworld" name="agriculture_homeworld" required>

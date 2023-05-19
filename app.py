@@ -74,7 +74,21 @@ def UserPage():
     return render_template("UserPage.html")
 @app.route("/ListGames", methods=['GET', 'POST'])
 def ListGames():
-    return render_template("ListGames.html")
+    if request.method == 'POST':
+        return render_template("ListGames.html")
+    else:
+
+        conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+        query = "SELECT * FROM game Join series ON game.sid = series.sid"
+        cursor = conn.cursor()
+        cursor.execute(query)
+        games = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return render_template("ListGames.html")
+
+
 @app.route("/YourGames", methods=['GET', 'POST'])
 def YourGames():
     return render_template("YourGames.html")

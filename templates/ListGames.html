@@ -17,7 +17,14 @@
             <a href="Historic">Historic</a>
             <a href="LogOut">Log Out</a>
         </div>
-  </header>
+    </header>
+
+    <ul>
+        {% for game in games %}
+        <li><a href="/partie/{{ game.gid }}">{{ game.name }}</a></li>
+        {% endfor %}
+    </ul>
+
 
 </body>
 </html>
