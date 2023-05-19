@@ -47,10 +47,10 @@ def LogIn():
         else:
             if(user[0] == 1) :
                 session["User"] = user
-                return render_template("AdminPage.html")
+                return redirect(url_for("AdminPage"))
             else:
                 session["User"] = user
-                return render_template("UserPage.html")
+                return redirect(url_for("UserPage"))
 
     else:
         return render_template("LogIn.html")
@@ -108,5 +108,14 @@ def LogOut():
     session.clear()
     return render_template("index.html")
 
+@app.route("/AdminPage", methods=['GET', 'POST'])
+def AdminPage():
+    return render_template("AdminPage.html")
+
+@app.route("/UserPage", methods=['GET', 'POST'])
+def UserPage():
+    return render_template("UserPage.html")
+
 if __name__ == '__main__':
     app.run()
+
