@@ -66,12 +66,15 @@ def CreateSeries():
     else:
         return render_template("CreateSeries.html")
 @app.route("/ListSeries", methods=['GET', 'POST'])
-def ListGames():
+def ListSeries():
     return render_template("ListSeries.html")
-#Function for the user page
+# Function for the user page
 @app.route("/UserPage", methods=['GET', 'POST'])
 def UserPage():
     return render_template("UserPage.html")
+@app.route("/ListGames", methods=['GET', 'POST'])
+def ListGames():
+    return render_template("ListGames.html")
 @app.route("/YourGames", methods=['GET', 'POST'])
 def YourGames():
     return render_template("YourGames.html")
