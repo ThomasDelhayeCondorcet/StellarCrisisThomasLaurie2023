@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create series</title>
+    <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+</head>
+<body>
+    <header>
+        <div class="topNav">
+            <a href="CreateSeries">Create series</a>
+            <a href="ListSeries">List series</a>
+            <a href="ModifieSeries">Modifie series</a>
+            <a href="CheckEmpire">Check empire</a>
+            <a href="Profile">Profile</a>
+            <a href="LogOut">Log Out</a>
+        </div>
+  </header>
+    <br>
+    <form action="" method="post">
+        <label>Name of the game</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label>Color of the game</label>
+        <input type="color" id="color" name="color" required><br>
+
+        <label>Short description</label>
+        <input type="text" id="short_descr" name="short_descr"><br>
+
+        <label>Long description</label>
+        <input type="text" id="long_descr" name="long_descr"><br>
+
+        <label>Update Time (nombre + heure/minute):</label>
+        <input type="text" id="update_time" name="update_time" required><br>
+
+        <label>time limits (nombre + jours/heure/minute):</label>
+        <input type="text" id="time_limite" name="time_limite" required><br>
+
+        <label>Overtime Update Time (nombre + heure/minute):</label>
+        <input type="text" id="overtime_update_time" name="overtime_update_time" required><br>
+
+        <label>Updates on week-end:</label>
+        <input type="radio" id="updates_weekend_oui" name="updates_weekend" value="yes" required>
+        <label>Yes</label>
+        <input type="radio" id="updates_weekend_non" name="updates_weekend" value="no">
+        <label>No</label><br>
+
+        <label>Updates from ... to ...:</label>
+        <input type="text" id="updates_periode_de" name="updates_periode_de" placeholder="From" required>
+        <input type="text" id="updates_periode_a" name="updates_periode_a" placeholder="To" required><br>
+
+        <label>Delay first update (nombre + jours/heure/minute):</label>
+        <input type="text" id="delay_premiere_update" name="delay_premiere_update" required><br>
+
+        <label>Technologie list:</label><br>
+        <input type="checkbox" id="technologie_developpee" name="technologie_developpee" value="developpee">
+        <label>Développée</label>
+        <input type="checkbox" id="technologie_permise" name="technologie_permise" value="permise">
+        <label>Permises</label>
+        <input type="checkbox" id="technologie_restricte" name="technologie_restricte" value ="restricte">
+        <label>Restreintes</label>
+        <input type="checkbox" id="technologie_interdite" name="technologie_interdite" value="interdite">
+        <label>Interdites</label><br>
+
+        <label>Nombre de technologies restreintes autorisées:</label>
+        <input type="number" id="technologies_restrictees_autorisees" name="technologies_restrictees_autorisees" required><br>
+
+        <label>Nombre de Trade-Ins de technologies restreintes:</label>
+        <input type="number" id="trade_ins_technologies_restrictees" name="trade_ins_technologies_restrictees" required><br>
+
+        <label>Diviseur de portée Stargate:</label>
+        <input type="number" id="diviseur_portee_stargate" name="diviseur_portee_stargate" required><br>
+
+        <label>Diviseur de portée Jumpgate:</label>
+        <input type="number" id="diviseur_portee_jumpgate" name="diviseur_portee_jumpgate" required><br>
+
+        <label>Nombre maximum de vaisseau par joueur:</label>
+        <input type="number" id="nombre_max_vaisseau_joueur" name="nombre_max_vaisseau_joueur" min="0"><br>
+
+        <label>Pertes lors d'activation des Engineer, Jumpgate, Morpher et Carrier:</label><br>
+        <input type="number" id="pertes_engineer" name="pertes_engineer" required>
+        <input type="number" id="pertes_jumpgate" name="pertes_jumpgate" required>
+        <input type="number" id="pertes_morpher" name="pertes_morpher" required>
+        <input type="number" id="pertes_carrier" name="pertes_carrier" required><br>
+
+        <label>Coûts de construction et de maintenance des Morphers, Builders, Jumpgates et Carriers:</label><br>
+        <label>Morphers :</label><br>
+        <input type="number" id="cout_construction_morpher" name="cout_construction_morpher" required>
+        <input type="number" id="cout_maintenance_morpher" name="cout_maintenance_morpher" required><br>
+        <label>Builder :</label><br>
+        <input type="number" id="cout_construction_builder" name="cout_construction_builder" required>
+        <input type="number" id="cout_maintenance_builder" name="cout_maintenance_builder" required><br>
+        <label>Jumpgate :</label><br>
+        <input type="number" id="cout_construction_jumpgate" name="cout_construction_jumpgate" required>
+        <input type="number" id="cout_maintenance_jumpgate" name="cout_maintenance_jumpgate" required><br>
+        <label>Carrier :</label><br>
+        <input type="number" id="cout_construction_carrier" name="cout_construction_carrier" required>
+        <input type="number" id="cout_maintenance_carrier" name="cout_maintenance_carrier" required><br>
+
+        <label>Minimum et Range pour les moyennes de ressources:</label><br>
+        <label>Agriculture:</label>
+        <input type="number" id="agriculture_minimum" name="agriculture_minimum" required>
+        <input type="number" id="agriculture_range" name="agriculture_range" required><br>
+
+        <label>Minerai:</label>
+        <input type="number" id="minerai_minimum" name="minerai_minimum" required>
+        <input type="number" id="minerai_range" name="minerai_range" required><br>
+
+        <label>Fuel:</label>
+        <input type="number" id="fuel_minimum" name="fuel_minimum" required>
+        <input type="number" id="fuel_range" name="fuel_range" required><br>
+
+        <label>Agriculture, Minerai et Fuel du HomeWorld:</label><br>
+        <input type="number" id="agriculture_homeworld" name="agriculture_homeworld" required>
+        <input type="number" id="minerai_homeworld" name="minerai_homeworld" required>
+        <input type="number" id="fuel_homeworld" name="fuel_homeworld" required><br>
+
+        <label>Coût pour construire une planète:</label>
+        <input type="number" id="cout_construction_planete" name="cout_construction_planete" required><br>
+
+        <label>Population minimum pour pouvoir construire un vaisseau:</label>
+        <input type="number" id="population_min_construct_vaisseau" name="population_min_construct_vaisseau" required><br>
+
+        <label for="nombre_max_parties_cours">Nombre maximum de parties en cours pour cette série:</label>
+        <input type="number" id="nombre_max_parties_cours" name="nombre_max_parties_cours" required><br>
+
+        <label for="spawn_first">Spawn First:</label>
+        <input type="text" id="spawn_first" name="spawn_first" required><br>
+
+        <label for="bridier_actif">Bridier actif:</label>
+        <input type="text" id="bridier_actif" name="bridier_actif"><br>
+
+        <label for="alliance_trade_truce">Permet Alliance/Trade/Truce:</label>
+        <select id="alliance_trade_truce" name="alliance_trade_truce" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+        <option value="only_trade_truce">Only Trade/Truce</option>
+    </select><br>
+
+    <label>Nombre maximum d'alliés:</label>
+    <input type="number" id="nombre_max_allies" name="nombre_max_allies" required><br>
+
+    <label>Permet Surrender/Draw:</label>
+    <select id="permet_surrender_draw" name="permet_surrender_draw" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select><br>
+
+    <label>Liste des joueurs de la partie visible dans la liste des parties:</label>
+    <input type="text" id="joueurs_visibles" name="joueurs_visibles" required><br>
+
+    <label>Les Cloakers sont invisibles quand fabriqués ?</label>
+    <select id="cloakers_invisibles" name="cloakers_invisibles" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select><br>
+
+    <label>Les constructions en attente sont visibles ?</label>
+    <select id="constructions_visibles" name="constructions_visibles" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select><br>
+
+    <label>Layout:</label>
+    <select id="layout" name="layout" required>
+        <option value="traditionnel">Traditionnel</option>
+        <option value="mirroir">Mirroir (2 joueurs uniquement)</option>
+    </select><br>
+
+    <label>Aveugle jusqu'au début de la partie ?</label>
+    <select id="aveugle_jusquau_debut" name="aveugle_jusquau_debut" required>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select><br>
+
+    <label>Nombre de joueurs maximum dans la partie:</label>
+    <input type="number" id="nombre_max_joueurs" name="nombre_max_joueurs" required><br>
+
+    <label>Minimum et Maximum du nombre de systèmes par joueur:</label><br>
+    <input type="number" id="nombre_systemes_min" name="nombre_systemes_min" required>
+    <input type="number" id="nombre_systemes_max" name="nombre_systemes_max" required><br>
+
+    <label for="agriculture_ratio_max">Agriculture ratio maximum:</label>
+    <input type="number" id="agriculture_ratio_max" name="agriculture_ratio_max" required><br>
+
+    <label>Multiplicateur de technologie:</label>
+    <input type="number" id="multiplicateur_technologie" name="multiplicateur_technologie" required><br>
+
+    <label>Niveau technologique initial:</label>
+    <input type="number" id="niveau_technologique_initial" name="niveau_technologique_initial" required><br>
+
+    <label>Nombre de victoires minimales et maximales pour rejoindre:</label><br>
+    <input type="number" id="victoires_minimales" name="victoires_minimales" required>
+    <input type="number" id="victoires_maximales" name="victoires_maximales" required><br>
+
+    <input type="submit" value="Create series">
+    </form>
+</body>
+</html>

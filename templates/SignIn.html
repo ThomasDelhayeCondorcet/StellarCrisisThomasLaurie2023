@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("password_confirm").value;
+            if (password != confirmPassword) {
+                document.getElementById("error").style.display = "block";
+                return false;
+            } else
+                return true;
+        }
+    </script>
+</head>
+<body>
+    <form class="center" action="" method="post">
+        <h1>Sign in</h1>
+        <label for="name">Name :</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="nickname">Nickname :</label>
+        <input type="text" id="nickname" name="nickname" required><br>
+
+        <label for="email">E-mail :</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="email_checkbox">Show my email :</label>
+        <input type="checkbox" id="email_checkbox" name="email_checkbox"><br>
+
+        <label for="password">Password :</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="password_confirm">Confirm password :</label>
+        <input type="password" id="password_confirm" name="password_confirm" required><br>
+
+        <p id="error" style="color: red; display: none;">Password doesn't match twice.</p>
+
+        <input type="submit" value="Sign in" onclick="return validatePassword()">
+    </form>
+</body>
+</html>

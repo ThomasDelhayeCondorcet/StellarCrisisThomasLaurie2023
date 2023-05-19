@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+</head>
+<body>
+
+    <form class="center" action="" method="post">
+        <h1>Log in</h1>
+        <label for="nickname">Nickname :</label>
+        <input type="text" id="nickname" name="nickname" required><br>
+
+        <label for="password">Password :</label>
+        <input type="password" id="password" name="password" required><br>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <input class="" type="submit" value="Log In">
+    </form>
+</body>
+</html>

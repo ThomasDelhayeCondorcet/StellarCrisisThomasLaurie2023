@@ -1,0 +1,126 @@
+body {
+    background-image: url("/static/IMG/starfield.gif");
+    background-color: #0c1b33;
+    color: #f5d4c0;
+}
+a {
+    color: #0c1b33;
+}
+/* Titres */
+h1, h2, h3, h4, h5, h6 {
+    color: #f5d4c0;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+h1 {
+    font-size: 48px;
+}
+h2 {
+    font-size: 36px;
+}
+h3 {
+    font-size: 24px;
+}
+input{
+    background-color: #f5d4c0;
+    color: #0c1b33;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px;
+}
+/* Boutons */
+button {
+    background-color: #f5d4c0;
+    color: #0c1b33;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+button:hover {
+    background-color: #0c1b33;
+    color: #f5d4c0;
+}
+/* Liens */
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+a:hover {
+    text-decoration: underline;
+    color: #f5d4c0;
+}
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+/* Section d'entête */
+header {
+    background-color: #0c1b33;
+    color: #ebebeb;
+}
+header h1 {
+    font-size: 72px;
+    margin-top: 0;
+}
+header p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+/* Section de contenu */
+content {
+    padding: 50px 0;
+}
+content h2 {
+    font-size: 48px;
+}
+content p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+/* Section de pied de page */
+footer {
+    background-color: #0c1b33;
+    color: #ebebeb;
+    padding: 50px 0;
+}
+footer p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+/*classe perso*/
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.topNav {
+  overflow: hidden;
+  background-color: #0c1b33;
+}
+.topNav a{
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topNav a:hover {
+    background-color: #f2f2f2;
+    color: #0c1b33;
+}

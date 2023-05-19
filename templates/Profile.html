@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("password_confirm").value;
+            if (password != confirmPassword) {
+                document.getElementById("error").style.display = "block";
+                return false;
+            } else
+                return true;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="topNav">
+            <a href="ListGames">List games</a>
+            <a href="YourGames">Your game</a>
+            <a href="NewGame">new game</a>
+            <a href="OpenGames">Open games</a>
+            <a href="Profile">Profile</a>
+            <a href="Statistics">Statistics</a>
+            <a href="Historic">Historic</a>
+            <a href="LogOut">Log Out</a>
+        </div>
+  </header>
+<form class="center" action="" method="post">
+        <label for="password">New password :</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="password_confirm">Confirm password :</label>
+        <input type="password" id="password_confirm" name="password_confirm" required><br>
+
+        <p id="error" style="color: red; display: none;">Password doesn't match twice.</p>
+
+        <input type="submit" value="Change password" onclick="return validatePassword()">
+        {% if success %}
+            <p style="color: green;">{{ success }}</p>
+        {% endif %}
+    </form>
+
+</body>
+</html>
