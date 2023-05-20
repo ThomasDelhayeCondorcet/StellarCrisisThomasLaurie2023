@@ -141,35 +141,39 @@
                 <td><input type="number" id="cost_construction_carrier" name="cost_construction_carrier" required></td> <!-- Table series : carrierbuild -->
                 <td><input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" required></td> <!-- Table series : carriermaint -->
             </tr>
+            <tr>
+                <td>Cost of building a planet:</td>
+                <td><input type="number" id="cost_building_planet" name="cost_building_planet" required></td> <!-- Table series : plabuild -->
+            </tr>
+            <h1>Ore,Fuel,Farm</h1>
+            <tr>
+                <th colspan="2" style="text-align: left">Minimum and Range for resource averages:</th>
+            </tr><br>
+            <tr>
+                <td>Farming minimum :</td>
+                <td>Farming range :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="farming_minimum" name="farming_minimum" required></td> <!-- Table series : avgag -->
+                <td><input type="number" id="farming_range" name="farming_range" required></td> <!-- Table series : rangeag -->
+            </tr>
+            <tr>
+                <td>Mineral minimum :</td>
+                <td>Mineral range :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="mineral_minimum" name="mineral_minimum" required></td> <!-- Table series : avgmin -->
+                <td><input type="number" id="mineral_range" name="mineral_range" required></td> <!-- Table series : rangemin -->
+            </tr>
+            <tr>
+                <td>Fuel minimum :</td>
+                <td>Fuel range :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="fuel_minimum" name="fuel_minimum" required></td> <!-- Table series : avgfuel -->
+                <td><input type="number" id="fuel_range" name="fuel_range" required></td> <!-- Table series : rangemin -->
+            </tr>
         </table>
-
-        <!--<label>Construction and maintenance costs of Morphers, Builders, Jumpgates et Carriers:</label><br>
-        <br><label>Morphers :</label><br>
-        <input type="number" id="cost_construction_morpher" name="cost_construction_morpher" required>
-        <input type="number" id="cost_maintenance_morpher" name="cost_maintenance_morpher" required><br> -->
-        <!--<label>Builder :</label><br>
-        <input type="number" id="cost_construction_builder" name="cost_construction_builder" required>
-        <input type="number" id="cost_maintenance_builder" name="cost_maintenance_builder" required><br> -->
-        <!--<label>Jumpgate :</label><br>
-        <input type="number" id="cost_construction_jumpgate" name="cost_construction_jumpgate" required>
-        <input type="number" id="cost_maintenance_jumpgate" name="cost_maintenance_jumpgate" required><br> -->
-        <!-- <label>Carrier :</label><br>
-        <input type="number" id="cost_construction_carrier" name="cost_construction_carrier" required>
-        <input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" required><br> -->
-
-        <label>Minimum and Range for resource averages:</label><br>
-
-        <label>Farming:</label>
-        <input type="number" id="farming_minimum" name="farming_minimum" required> <!-- Table series : avgag -->
-        <input type="number" id="farming_range" name="farming_range" required><br> <!-- Table series : rangeag -->
-
-        <label>Mineral:</label>
-        <input type="number" id="mineral_minimum" name="mineral_minimum" required> <!-- Table series : avgmin -->
-        <input type="number" id="mineral_range" name="mineral_range" required><br> <!-- Table series : rangemin -->
-
-        <label>Fuel:</label>
-        <input type="number" id="fuel_minimum" name="fuel_minimum" required> <!-- Table series : avgfuel -->
-        <input type="number" id="fuel_range" name="fuel_range" required><br> <!-- Table series : rangefuel -->
 
         <label>Farming, Mineral and Fuel of the HomeWorld:</label><br>
         <input type="number" id="farming_homeworld" name="farming_homeworld" required> <!-- Table series : homeag -->

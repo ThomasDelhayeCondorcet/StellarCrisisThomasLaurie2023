@@ -99,7 +99,7 @@ def CreateSeries():
         farming_homeworld=request.form['farming_homeworld']
         mineral_homeworld=request.form['mineral_homeworld']
         fuel_homeworld=request.form['fuel_homeworld']
-        cost_building_planete=request.form['cost_building_planete']
+        cost_building_planet=request.form['cost_building_planet']
         population_min_build_ship=request.form['population_min_build_ship']
         number_max_current_game=request.form['number_max_current_game']
         spawn_first=request.form['spawn_first']
@@ -134,7 +134,7 @@ def CreateSeries():
               divider_range_jumpgate, max_ship_player, loss_engineer, loss_jumpgate, loss_morpher, loss_carrier, cost_construction_morpher,
               cost_maintenance_morpher, cost_maintenance_morpher, cost_construction_builder, cost_maintenance_builder, cost_construction_jumpgate,
               cost_maintenance_jumpgate, cost_construction_carrier, cost_maintenance_carrier, farming_minimum, farming_range, mineral_minimum,
-              mineral_range, fuel_minimum, fuel_range, farming_homeworld, mineral_homeworld, fuel_homeworld, cost_building_planete,
+              mineral_range, fuel_minimum, fuel_range, farming_homeworld, mineral_homeworld, fuel_homeworld, cost_building_planet,
               population_min_build_ship, number_max_current_game, spawn_first, active_bridier, alliance_trade_truce, number_max_allies,
               allow_surrender_draw, viewable_players, cloakers_invisibles, constructions_visible, layout, blind_until_start, number_max_player,
               number_systems_min, number_systems_max, farming_ratio_max, technology_multiplier, initial_technological_level, minimum_wins,
