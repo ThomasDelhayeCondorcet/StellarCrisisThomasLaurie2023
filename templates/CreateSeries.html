@@ -67,28 +67,66 @@
         <input type="number" id="max_ship_player" name="max_ship_player" min="0"><br> <!-- Table series : maxship -->
 
         <label>Loss when Engineer, Jumpgate, Morpher and Carrier activation:</label><br>
-        <label>Engineer :</label><br>
-        <input type="number" id="loss_engineer" name="loss_engineer" required> <!-- Table series : engloss -->
-        <label>Jumpgate :</label><br>
-        <input type="number" id="loss_jumpgate" name="loss_jumpgate" required> <!-- Table series : jumploss -->
-        <label>Morphers :</label><br>
-        <input type="number" id="loss_morpher" name="loss_morpher" required> <!-- Table series : morphloss -->
-        <label>Carrier :</label><br>
+        <label>Engineer :</label>
+        <input type="number" id="loss_engineer" name="loss_engineer" required><br> <!-- Table series : engloss -->
+        <label>Jumpgate :</label>
+        <input type="number" id="loss_jumpgate" name="loss_jumpgate" required><br> <!-- Table series : jumploss -->
+        <label>Morphers :</label>
+        <input type="number" id="loss_morpher" name="loss_morpher" required><br> <!-- Table series : morphloss -->
+        <label>Carrier :</label>
         <input type="number" id="loss_carrier" name="loss_carrier" required><br> <!-- Table series : carloss -->
 
-        <label>Construction and maintenance costs of Morphers, Builders, Jumpgates et Carriers:</label><br>
-        <label>Morphers :</label><br>
-        <input type="number" id="cost_construction_morpher" name="cost_construction_morpher" required> <!-- Table series : morpherbuild -->
-        <input type="number" id="cost_maintenance_morpher" name="cost_maintenance_morpher" required><br> <!-- Table series : morphermaint -->
-        <label>Builder :</label><br>
-        <input type="number" id="cost_construction_builder" name="cost_construction_builder" required> <!-- Table series : builderbuild -->
-        <input type="number" id="cost_maintenance_builder" name="cost_maintenance_builder" required><br> <!-- Table series : buildermaint -->
-        <label>Jumpgate :</label><br>
-        <input type="number" id="cost_construction_jumpgate" name="cost_construction_jumpgate" required> <!-- Table series : jumpgatebuild -->
-        <input type="number" id="cost_maintenance_jumpgate" name="cost_maintenance_jumpgate" required><br> <!-- Table series : jumpgatemaint -->
-        <label>Carrier :</label><br>
-        <input type="number" id="cost_construction_carrier" name="cost_construction_carrier" required> <!-- Table series : carrierbuild -->
-        <input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" required><br> <!-- Table series : carriermaint -->
+        <table>
+            <tr>
+                <th colspan="2">Construction and maintenance costs of Morphers, Builders, Jumpgates et Carriers:</th>
+            </tr><br>
+            <tr>
+                <td>Morphers construction :</td>
+                <td>Morphers maintenance :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="cost_construction_morpher" name="cost_construction_morpher" required></td> <!-- Table series : morpherbuild -->
+                <td><input type="number" id="cost_maintenance_morpher" name="cost_maintenance_morpher" required></td> <!-- Table series : morphermaint -->
+            </tr>
+            <tr>
+                <td>Builder construction :</td>
+                <td>Builder maintenance :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="cost_construction_builder" name="cost_construction_builder" required></td> <!-- Table series : builderbuild -->
+                <td><input type="number" id="cost_maintenance_builder" name="cost_maintenance_builder" required></td> <!-- Table series : buildermaint -->
+            </tr>
+            <tr>
+                <td>Jumpgate construction :</td>
+                <td>Jumpgate maintenance :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="cost_construction_jumpgate" name="cost_construction_jumpgate" required></td> <!-- Table series : jumpgatebuild -->
+                <td><input type="number" id="cost_maintenance_jumpgate" name="cost_maintenance_jumpgate" required></td> <!-- Table series : jumpgatemaint -->
+            </tr>
+            <tr>
+                <td>Carrier construction :</td>
+                <td>Carrier maintenance :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="cost_construction_carrier" name="cost_construction_carrier" required></td> <!-- Table series : carrierbuild -->
+                <td><input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" required></td> <!-- Table series : carriermaint -->
+            </tr>
+        </table>
+
+        <!--<label>Construction and maintenance costs of Morphers, Builders, Jumpgates et Carriers:</label><br>
+        <br><label>Morphers :</label><br>
+        <input type="number" id="cost_construction_morpher" name="cost_construction_morpher" required>
+        <input type="number" id="cost_maintenance_morpher" name="cost_maintenance_morpher" required><br> -->
+        <!--<label>Builder :</label><br>
+        <input type="number" id="cost_construction_builder" name="cost_construction_builder" required>
+        <input type="number" id="cost_maintenance_builder" name="cost_maintenance_builder" required><br> -->
+        <!--<label>Jumpgate :</label><br>
+        <input type="number" id="cost_construction_jumpgate" name="cost_construction_jumpgate" required>
+        <input type="number" id="cost_maintenance_jumpgate" name="cost_maintenance_jumpgate" required><br> -->
+        <!-- <label>Carrier :</label><br>
+        <input type="number" id="cost_construction_carrier" name="cost_construction_carrier" required>
+        <input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" required><br> -->
 
         <label>Minimum and Range for resource averages:</label><br>
 

@@ -126,9 +126,9 @@ def CreateSeries():
                "availrestrict, tradeinrestrict, stargate, jumpgate, maxship, engloss, jumploss, morphloss, carloss, morpherbuild, " \
                "morphermaint, builderbuild, buildermaint, jumpgatebuild, jumpgatemaint, carrierbuild, carriermaint, avgag, rangeag, " \
                "avgmin, rangemin, avgfuel, rangefuel, homaeag, homemin, homefuel, plabuild, minbuild, max, spawnfirst, bridier, " \
-               "blood, maxallies, surrdraw, visp, initcloak, vis, layout, blind, pmax, smin, smax, maxag, tmult, inittech, wins, winmax,) " \
+               "blood, maxallies, surrdraw, visp, initcloak, vis, layout, blind, pmax, smin, smax, maxag, tmult, inittech, wins, winmax) " \
                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, " \
-               "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,)"
+               "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
         data=(name, color, short_descr, long_descr, update_time, time_limit, overtime_update_time, updates_weekend, updates_period_from,
               updates_period_to, delay_first_update, technologies_restricted_allowed, trade_ins_technologies_restricted, divider_range_stargate,
               divider_range_jumpgate, max_ship_player, loss_engineer, loss_jumpgate, loss_morpher, loss_carrier, cost_construction_morpher,
@@ -138,15 +138,16 @@ def CreateSeries():
               population_min_build_ship, number_max_current_game, spawn_first, active_bridier, alliance_trade_truce, number_max_allies,
               allow_surrender_draw, viewable_players, cloakers_invisibles, constructions_visible, layout, blind_until_start, number_max_player,
               number_systems_min, number_systems_max, farming_ratio_max, technology_multiplier, initial_technological_level, minimum_wins,
-              maximum_wins,)
+              maximum_wins)
 
         cursor = conn.cursor()
         cursor.execute(query, data)
         conn.commit()
-
         return render_template("AdminPage.html")
+
     else:
         return render_template("CreateSeries.html")
+
 @app.route("/ListSeries", methods=['GET', 'POST'])
 def ListSeries():
     return render_template("ListSeries.html")
