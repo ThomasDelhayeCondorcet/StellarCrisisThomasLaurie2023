@@ -1,4 +1,3 @@
-from datetime import time
 from flask import Flask, render_template, url_for, redirect, session, Response, request, flash
 import psycopg2
 
