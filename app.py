@@ -177,6 +177,66 @@ def Broadcast():
         return redirect(url_for("AdminPage"))
     else:
         return render_template("BroadCast.html")
+@app.route("/CheckEmpire")
+def CheckEmpire():
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "SELECT * FROM player ORDER BY pid"
+    cursor = conn.cursor()
+    cursor.execute(query)
+    Empire=cursor.fetchall()
+    return render_template("CheckEmpire.html", Empire=Empire)
+@app.route("/EditEmpire/<pid>", methods=['GET', 'POST'])
+def EditEmpire(pid):
+    if request.method=="POST":
+        uname=request.form['uname']
+        realname=request.form['realname']
+        email=request.form['email']
+        showemail= 1 if request.form.get('email_checkbox') == "on" else 0
+        passwd=request.form['password']
+        cmt=request.form['cmt']
+        victory=request.form['victory']
+        wins=request.form['wins']
+        kills=request.form['kills']
+        killed=request.form['killed']
+        ruined=request.form['ruined']
+        alien=request.form['alien']
+        bridieridx=request.form['bridieridx']
+        bridierrank=request.form['bridierrank']
+        maxepow=request.form['maxepow']
+        maxmpow=request.form['maxmpow']
+
+        conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                                password="graiple56laibla")
+        query = "Update player set uname = %s, realname = %s, email = %s, showemail = %s, passwd = %s, cmt = %s, "\
+                "victory = %s, wins = %s, kills = %s, killed = %s, ruined = %s, alien = %s, bridieridx = %s, " \
+                "bridierrank = %s, maxepow = %s, maxmpow = %s WHERE pid=%s"
+        data = (uname, realname, email, showemail, passwd, cmt,
+                victory, wins, kills, killed, ruined, alien, bridieridx,
+                bridierrank, maxepow, maxmpow, pid)
+        cursor = conn.cursor()
+        cursor.execute(query, data)
+        conn.commit()
+        return redirect(url_for("CheckEmpire"))
+    else:
+        conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                                password="graiple56laibla")
+        query = "Select * FROM player WHERE pid= %s"
+        data = (pid,)
+        cursor = conn.cursor()
+        cursor.execute(query, data)
+        empire = cursor.fetchone()
+        return render_template("EditEmpire.html", empire=empire)
+@app.route("/KillEmpire/<pid>")
+def KillEmpire(pid):
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "DELETE FROM player WHERE pid= %s"
+    data= (pid,)
+    cursor = conn.cursor()
+    cursor.execute(query, data)
+    conn.commit()
+    return redirect(url_for("CheckEmpire"))
 
 # Function for the user page
 @app.route("/UserPage", methods=['GET', 'POST'])
