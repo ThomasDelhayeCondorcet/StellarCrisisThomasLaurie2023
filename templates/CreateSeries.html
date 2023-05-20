@@ -17,11 +17,9 @@
   </header>
     <br>
     <form action="" method="post">
+        <h1>Global parameter</h1><br>
         <label>Name of the game</label> <!-- Table series : sname -->
         <input type="text" id="name" name="name" required><br>
-
-        <label>Color of the game</label> <!-- Table series : color -->
-        <input type="color" id="color" name="color" required><br>
 
         <label>Short description</label> <!-- Table series : descr -->
         <input type="text" id="short_descr" name="short_descr"><br>
@@ -29,6 +27,23 @@
         <label>Long description</label>
         <input type="text" id="long_descr" name="long_descr"><br> <!-- Table series : fulldesc -->
 
+        <label>Color of the game</label> <!-- Table series : color -->
+        <input type="color" id="color" name="color" required><br>
+
+        <label>Spawn First:</label>
+        <input type="number" id="spawn_first" name="spawn_first" required><br> <!-- Table series : spawnfirst -->
+
+        <label>Maximum number of current games for this series:</label>
+        <input type="number" id="number_max_current_game" name="number_max_current_game" required><br> <!-- Table series : max -->
+
+        <label>Minimum and maximum wins to join:</label><br>
+        <input type="number" id="minimum_wins" name="minimum_wins" required> <!-- Table series : wins -->
+        <input type="number" id="maximum_wins" name="maximum_wins" required><br> <!-- Table series : winmax -->
+
+        <label>active bridier:</label>
+        <input type="number" id="active_bridier" name="active_bridier"><br> <!-- Table series : bridier -->
+
+        <h1>Update</h1><br>
         <label>Update Time :</label>
         <input type="text" id="update_time" name="update_time" required><br> <!-- Table series : utime -->
 
@@ -51,11 +66,28 @@
         <label>Delay first update :</label>
         <input type="text" id="delay_first_update" name="delay_first_update" required><br> <!-- Table series : udelay -->
 
+        <h1>Technology</h1><br>
         <label>Number of restricted technologies allowed:</label>
         <input type="number" id="technologies_restricted_allowed" name="technologies_restricted_allowed" required><br> <!-- Table series : availrestrict -->
 
         <label>Number of Trade-Ins of restricted technologies:</label>
         <input type="number" id="trade_ins_technologies_restricted" name="trade_ins_technologies_restricted" required><br> <!-- Table series : tradeinrestrict -->
+
+        <label>Initial technological level:</label>
+        <input type="number" id="initial_technological_level" name="initial_technological_level" required><br> <!-- Table series : inittech -->
+
+        <label>Technology multiplier:</label>
+        <input type="number" id="technology_multiplier:" name="technology_multiplier" required><br> <!-- Table series : tmult -->
+
+        <h1>Ship/planet</h1><br>
+        <label>Cloakers are invisibles when built ?</label>
+        <select id="cloakers_invisibles" name="cloakers_invisibles" required> <!-- Table series : initcloak -->
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br>
+
+        <label>Maximum number of ships per player:</label>
+        <input type="number" id="max_ship_player" name="max_ship_player" min="0"><br> <!-- Table series : maxship -->
 
         <label>Stargate'range divider:</label>
         <input type="number" id="divider_range_stargate" name="divider_range_stargate" required><br> <!-- Table series : stargate -->
@@ -63,14 +95,11 @@
         <label>Jumpgate'range divider:</label>
         <input type="number" id="divider_range_jumpgate" name="divider_range_jumpgate" required><br> <!-- Table series : jumpgate -->
 
-        <label>Maximum number of ships per player:</label>
-        <input type="number" id="max_ship_player" name="max_ship_player" min="0"><br> <!-- Table series : maxship -->
-
         <label>Loss when Engineer, Jumpgate, Morpher and Carrier activation:</label><br>
-        <label>Engineer :</label>
-        <input type="number" id="loss_engineer" name="loss_engineer" required><br> <!-- Table series : engloss -->
         <label>Jumpgate :</label>
         <input type="number" id="loss_jumpgate" name="loss_jumpgate" required><br> <!-- Table series : jumploss -->
+        <label>Engineer :</label>
+        <input type="number" id="loss_engineer" name="loss_engineer" required><br> <!-- Table series : engloss -->
         <label>Morphers :</label>
         <input type="number" id="loss_morpher" name="loss_morpher" required><br> <!-- Table series : morphloss -->
         <label>Carrier :</label>
@@ -147,20 +176,8 @@
         <input type="number" id="mineral_homeworld" name="mineral_homeworld" required> <!-- Table series : homemin -->
         <input type="number" id="fuel_homeworld" name="fuel_homeworld" required><br> <!-- Table series : homefuel -->
 
-        <label>Cost of building a planet:</label>
-        <input type="number" id="cost_building_planete" name="cost_building_planete" required><br> <!-- Table series : plabuild -->
-
         <label>Minimum population to build a ship:</label>
         <input type="number" id="population_min_build_ship" name="population_min_build_ship" required><br> <!-- Table series : minbuild -->
-
-        <label>Maximum number of current games for this series:</label>
-        <input type="number" id="number_max_current_game" name="number_max_current_game" required><br> <!-- Table series : max -->
-
-        <label>Spawn First:</label>
-        <input type="text" id="spawn_first" name="spawn_first" required><br> <!-- Table series : spawnfirst -->
-
-        <label>active bridier:</label>
-        <input type="text" id="active_bridier" name="active_bridier"><br> <!-- Table series : bridier -->
 
         <label>Allow Alliance/Trade/Truce:</label>
         <select id="alliance_trade_truce" name="alliance_trade_truce" required> <!-- Table series : blood -->
@@ -181,11 +198,7 @@
     <label>List of players of the game visible in the game list:</label>
     <input type="text" id="viewable_players" name="viewable_players" required><br> <!-- Table series : visp -->
 
-    <label>Cloakers are invisibles when built ?</label>
-    <select id="cloakers_invisibles" name="cloakers_invisibles" required> <!-- Table series : initcloak -->
-        <option value="yes">Yes</option>
-        <option value="no">No</option>
-    </select><br>
+
 
     <label>Are the construction waiting visible?</label>
     <select id="constructions_visible" name="constructions_visible" required> <!-- Table series : vis -->
@@ -199,14 +212,15 @@
         <option value="mirror">Mirror (Only 2 Player)</option>
     </select><br>
 
+    <h1>Other</h1><br>
+    <label>Maximum number of players in the game:</label>
+    <input type="number" id="number_max_player" name="number_max_player" required><br> <!-- Table series : pmax -->
+
     <label>Blind until the game starts?</label>
     <select id="blind_until_start" name="blind_until_start" required> <!-- Table series : blind -->
         <option value="yes">Yes</option>
         <option value="no">No</option>
     </select><br>
-
-    <label>Maximum number of players in the game:</label>
-    <input type="number" id="number_max_player" name="number_max_player" required><br> <!-- Table series : pmax -->
 
     <label>Minimum and maximum number of systems per player:</label><br>
     <input type="number" id="number_systems_min" name="number_systems_min" required> <!-- Table series : smin -->
@@ -215,15 +229,6 @@
     <label>Farming ratio maximum:</label>
     <input type="number" id="farming_ratio_max" name="farming_ratio_max" required><br> <!-- Table series : maxag -->
 
-    <label>Technology multiplier:</label>
-    <input type="number" id="technology_multiplier:" name="technology_multiplier" required><br> <!-- Table series : tmult -->
-
-    <label>Initial technological level:</label>
-    <input type="number" id="initial_technological_level" name="initial_technological_level" required><br> <!-- Table series : inittech -->
-
-    <label>Minimum and maximum wins to join:</label><br>
-    <input type="number" id="minimum_wins" name="minimum_wins" required> <!-- Table series : wins -->
-    <input type="number" id="maximum_wins" name="maximum_wins" required><br> <!-- Table series : winmax -->
 
     <input type="submit" value="Create series">
     </form>
