@@ -18,6 +18,12 @@
             <a href="LogOut">Log Out</a>
         </div>
   </header>
-<h1 class="center">Welcome to your user page </h1>
+    <div class="center">
+        <h1>Welcome to your user page </h1>
+        {% if Broadcast %}
+             <p style="text-align: center">{{ Broadcast }}</p>oadcast }}</p>
+        {% endif %}
+    </div>
+
 </body>
 </html>

@@ -57,7 +57,9 @@ def LogIn():
 #Function of the admin page
 @app.route("/AdminPage", methods=['GET', 'POST'])
 def AdminPage():
-    return render_template("AdminPage.html")
+    user = session["User"]
+    Broadcast = user[19]
+    return render_template("AdminPage.html", Broadcast=Broadcast)
 @app.route("/CreateSeries", methods=['GET', 'POST'])
 def CreateSeries():
     if request.method == 'POST':
@@ -158,7 +160,9 @@ def ListSeries():
 # Function for the user page
 @app.route("/UserPage", methods=['GET', 'POST'])
 def UserPage():
-    return render_template("UserPage.html")
+    user = session["User"]
+    Broadcast = user[19]
+    return render_template("UserPage.html", Broadcast=Broadcast)
 @app.route("/ListGames", methods=['GET', 'POST'])
 def ListGames():
     if request.method == 'POST':
