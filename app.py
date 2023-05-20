@@ -20,12 +20,12 @@ def SignIn():
         password = request.form['password']
 
         conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306", password="graiple56laibla")
-        query ="Insert into player (uname, passwd, realname, email, showemail, lastlog, ) VALUES (%s, %s, %s, %s, %s)"
+        query ="Insert into player (uname, passwd, realname, email, showemail) VALUES (%s, %s, %s, %s, %s)"
         data = (nickname, password, name, email, emailConfirm)
         cursor = conn.cursor()
         cursor.execute(query, data)
         conn.commit()
-        return render_template("Login.html")
+        return redirect(url_for("LogIn"))
     else:
         return render_template("SignIn.html")
 

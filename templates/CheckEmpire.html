@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CheckEmpire</title>
+    <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+</head>
+<body>
+<header>
+        <div class="topNav">
+            <a href="CreateSeries">Create series</a>
+            <a href="ListSeries">List series</a>
+            <a href="CheckEmpire">Check empire</a>
+            <a href="Broadcast">Broadcast</a>
+            <a href="LogOut">Log Out</a>
+        </div>
+</header>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Empire Name</th>
+        <th>Real name</th>
+    </tr>
+    {% for cell in Empire %}
+        <tr>
+            <td>{{ cell[0] }}</td> <!-- Id -->
+            <td>{{ cell[1] }}</td> <!-- Empire name -->
+            <td>{{ cell[3] }}</td> <!-- Real name -->
+            <td><a style="color: greenyellow" href="EditEmpire/{{ cell[0] }}">Edit Empire</a></td>
+            <td><a style="color: red" href="KillEmpire/{{ cell[0] }}">Kill Empire</a></td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

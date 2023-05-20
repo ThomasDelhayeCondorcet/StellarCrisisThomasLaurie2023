@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EditEmpire</title>
+    <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+    <script>
+        function validatePassword() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("password_confirm").value;
+            if (password != confirmPassword) {
+                document.getElementById("error").style.display = "block";
+                return false;
+            } else
+                return true;
+        }
+    </script>
+</head>
+<body>
+<header>
+        <div class="topNav">
+            <a href="CreateSeries">Create series</a>
+            <a href="ListSeries">List series</a>
+            <a href="CheckEmpire">Check empire</a>
+            <a href="Broadcast">Broadcast</a>
+            <a href="LogOut">Log Out</a>
+        </div>
+</header>
+<form class="center" action="" method="post">
+        <h1>Edit Empire</h1>
+        <input type="hidden" id="pid" name="pid" value="{{ empire[0] }}"><br>
+
+        <label>Empire name :</label>
+        <input type="text" id="uname" name="uname" value="{{ empire[1] }}"><br>
+
+        <label>Real name :</label>
+        <input type="text" id="realname" name="realname" value="{{ empire[3] }}"><br>
+
+        <label >E-mail :</label>
+        <input type="email" id="email" name="email" value="{{ empire[4] }}"><br>
+
+        <label>Show my email :</label>
+        <input type="checkbox" id="email_checkbox" name="email_checkbox" {% if empire[5] == 1 %}checked{% endif %}><br>
+
+        <label>Password :</label>
+        <input type="password" id="password" name="password" value="{{ empire[2] }}"><br>
+
+        <label>Confirm password :</label>
+        <input type="password" id="password_confirm" name="password_confirm" value="{{ empire[2] }}">
+        <p id="error" style="color: red; display: none;">Password doesn't match twice.</p><br>
+
+        <label>Account commentary :</label>
+        <input type="text" id="cmt" name="cmt" value="{{ empire[1] }}" value="{{ empire[26] }}"><br>
+
+        <label>Victory scream :</label>
+        <input type="text" id="victory" name="victory" value="{{ empire[27] }}"><br>
+
+        <label>Number of wins :</label>
+        <input type="number" id="wins" name="wins" value="{{ empire[10] }}"><br>
+
+        <label>Number of kills :</label>
+        <input type="number" id="kills" name="kills" value="{{ empire[11] }}"><br>
+
+        <label>Number of nuked :</label>
+        <input type="number" id="killed" name="killed" value="{{ empire[13] }}"><br>
+
+        <label>Number of ruined :</label>
+        <input type="number" id="ruined" name="ruined" value="{{ empire[12] }}"><br>
+
+        <label>Alien number :</label>
+        <input type="number" id="alien" name="alien" value="{{ empire[6] }}"><br>
+
+        <label>Index bridier :</label>
+        <input type="number" id="bridieridx" name="bridieridx" value="{{ empire[8] }}"><br>
+
+        <label>Rang bridier :</label>
+        <input type="number" id="bridierrank" name="bridierrank" value="{{ empire[9] }}"><br>
+
+        <label>Economic power max :</label>
+        <input type="number" id="maxepow" name="maxepow" value="{{ empire[14] }}"><br>
+
+        <label>Military power max :</label>
+        <input type="number" id="maxmpow" name="maxmpow" value="{{ empire[15] }}"><br>
+
+        <input type="submit" value="Edit" onclick="return validatePassword()">
+    </form>
+</body>
+</html>
