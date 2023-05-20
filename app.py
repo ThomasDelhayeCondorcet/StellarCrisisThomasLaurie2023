@@ -1,3 +1,5 @@
+from datetime import datetime, date
+
 from flask import Flask, render_template, url_for, redirect, session, Response, request, flash
 import psycopg2
 
@@ -157,6 +159,25 @@ def CreateSeries():
 @app.route("/ListSeries", methods=['GET', 'POST'])
 def ListSeries():
     return render_template("ListSeries.html")
+
+@app.route("/Broadcast", methods=['GET', 'POST'])
+def Broadcast():
+    if request.method=='POST':
+        user = session["User"]
+        message = request.form['message']
+        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        admin_message = "{} Broadcasted at {}: {}".format(user[1], current_time, message)
+
+        conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306", password="graiple56laibla")
+        query="UPDATE player SET bcast = %s"
+        data=(admin_message,)
+        cursor = conn.cursor()
+        cursor.execute(query, data)
+        conn.commit()
+        return redirect(url_for("AdminPage"))
+    else:
+        return render_template("BroadCast.html")
+
 # Function for the user page
 @app.route("/UserPage", methods=['GET', 'POST'])
 def UserPage():
