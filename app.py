@@ -62,83 +62,89 @@ def AdminPage():
 @app.route("/CreateSeries", methods=['GET', 'POST'])
 def CreateSeries():
     if request.method == 'POST':
-        name=request.form['name']
+        #Global
+        sname=request.form['name']
+        descr=request.form['short_descr']
+        fulldesc=request.form['long_descr']
         color=request.form['color']
-        short_descr=request.form['short_descr']
-        long_descr=request.form['long_descr']
-        update_time=request.form['update_time']
-        time_limit=request.form['time_limit']
-        overtime_update_time=request.form['overtime_update_time']
-        updates_weekend=request.form['updates_weekend']
-        updates_period_from=request.form['updates_period_from']
-        updates_period_to=request.form['updates_period_to']
-        delay_first_update=request.form['delay_first_update']
-        technologies_restricted_allowed=request.form['technologies_restricted_allowed']
-        trade_ins_technologies_restricted=request.form['trade_ins_technologies_restricted']
-        divider_range_stargate=request.form['divider_range_stargate']
-        divider_range_jumpgate=request.form['divider_range_jumpgate']
-        max_ship_player=request.form['max_ship_player']
-        loss_engineer=request.form['loss_engineer']
-        loss_jumpgate=request.form['loss_jumpgate']
-        loss_morpher=request.form['loss_morpher']
-        loss_carrier=request.form['loss_carrier']
-        cost_construction_morpher=request.form['cost_construction_morpher']
-        cost_maintenance_morpher=request.form['cost_maintenance_morpher']
-        cost_construction_builder=request.form['cost_construction_builder']
-        cost_maintenance_builder=request.form['cost_maintenance_builder']
-        cost_construction_jumpgate=request.form['cost_construction_jumpgate']
-        cost_maintenance_jumpgate=request.form['cost_maintenance_jumpgate']
-        cost_construction_carrier=request.form['cost_construction_carrier']
-        cost_maintenance_carrier=request.form['cost_maintenance_carrier']
-        farming_minimum=request.form['farming_minimum']
-        farming_range=request.form['farming_range']
-        mineral_minimum=request.form['mineral_minimum']
-        mineral_range=request.form['mineral_range']
-        fuel_minimum=request.form['fuel_minimum']
-        fuel_range=request.form['fuel_range']
-        farming_homeworld=request.form['farming_homeworld']
-        mineral_homeworld=request.form['mineral_homeworld']
-        fuel_homeworld=request.form['fuel_homeworld']
-        cost_building_planet=request.form['cost_building_planet']
-        population_min_build_ship=request.form['population_min_build_ship']
-        number_max_current_game=request.form['number_max_current_game']
-        spawn_first=request.form['spawn_first']
-        active_bridier=request.form['active_bridier']
-        alliance_trade_truce=request.form['alliance_trade_truce']
-        number_max_allies=request.form['number_max_allies']
-        allow_surrender_draw=request.form['allow_surrender_draw']
-        viewable_players=request.form['viewable_players']
-        cloakers_invisibles=request.form['cloakers_invisibles']
-        constructions_visible=request.form['constructions_visible']
+        simage = "empty.gif"
+        spawnfirst=request.form['spawn_first']
+        max=request.form['number_max_current_game']
+        wins=request.form['minimum_wins']
+        winmax=request.form['maximum_wins']
+        bridier=request.form['active_bridier']
+
+        #Update
+        utime=request.form['update_time']
+        timelimit=request.form['time_limit']
+        overtime=request.form['overtime_update_time']
+        weekend=request.form['updates_weekend']
+        fromhr=request.form['updates_period_from']
+        tohr=request.form['updates_period_to']
+        udelay=request.form['delay_first_update']
+
+        #Techno
+        availrestrict=request.form['technologies_restricted_allowed']
+        tradeinrestrict=request.form['trade_ins_technologies_restricted']
+        inittech=request.form['initial_technological_level']
+        tmult=request.form['technology_multiplier']
+
+        #Ship
+        initcloak=request.form['cloakers_invisibles']
+        maxship=request.form['max_ship_player']
+        stargate=request.form['divider_range_stargate']
+        jumpgate=request.form['divider_range_jumpgate']
+        engloss=request.form['loss_engineer']
+        jumploss=request.form['loss_jumpgate']
+        morphloss=request.form['loss_morpher']
+        carloss=request.form['loss_carrier']
+        morpherbuild=request.form['cost_construction_morpher']
+        morphermaint=request.form['cost_maintenance_morpher']
+        builderbuild=request.form['cost_construction_builder']
+        buildermaint=request.form['cost_maintenance_builder']
+        jumpgatebuild=request.form['cost_construction_jumpgate']
+        jumpgatemaint=request.form['cost_maintenance_jumpgate']
+        carrierbuild=request.form['cost_construction_carrier']
+        carriermaint=request.form['cost_maintenance_carrier']
+        plabuild=request.form['cost_building_planet']
+
+        #ore, fuell,..
+        avgag=request.form['farming_minimum']
+        avgmin=request.form['mineral_minimum']
+        avgfuel=request.form['fuel_minimum']
+        rangeag=request.form['farming_range']
+        rangemin=request.form['mineral_range']
+        rangefuel=request.form['fuel_range']
+        homeag=request.form['farming_homeworld']
+        homemin=request.form['mineral_homeworld']
+        homefuel=request.form['fuel_homeworld']
+        maxag=request.form['farming_ratio_max']
+        minbuild=request.form['population_min_build_ship']
+        smin=request.form['number_systems_min']
+        smax=request.form['number_systems_max']
         layout=request.form['layout']
-        blind_until_start=request.form['blind_until_start']
-        number_max_player=request.form['number_max_player']
-        number_systems_min=request.form['number_systems_min']
-        number_systems_max=request.form['number_systems_max']
-        farming_ratio_max=request.form['farming_ratio_max']
-        technology_multiplier=request.form['technology_multiplier']
-        initial_technological_level=request.form['initial_technological_level']
-        minimum_wins=request.form['minimum_wins']
-        maximum_wins=request.form['maximum_wins']
+
+        #Other
+        pmax=request.form['number_max_player']
+        maxallies=request.form['number_max_allies']
+        blood=request.form['alliance_trade_truce']
+        surrdraw=request.form['allow_surrender_draw']
+        blind=request.form['blind_until_start']
+        vis=request.form['constructions_visible']
+        visp=request.form['viewable_players']
 
         conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306", password="graiple56laibla")
-        query ="Insert into series (sname, color, descr, fulldesc, utime, timelimit, overtime, weekend, fromhr, tohr, udelay, " \
-               "availrestrict, tradeinrestrict, stargate, jumpgate, maxship, engloss, jumploss, morphloss, carloss, morpherbuild, " \
-               "morphermaint, builderbuild, buildermaint, jumpgatebuild, jumpgatemaint, carrierbuild, carriermaint, avgag, rangeag, " \
-               "avgmin, rangemin, avgfuel, rangefuel, homaeag, homemin, homefuel, plabuild, minbuild, max, spawnfirst, bridier, " \
-               "blood, maxallies, surrdraw, visp, initcloak, vis, layout, blind, pmax, smin, smax, maxag, tmult, inittech, wins, winmax) " \
+        query ="Insert into series (sname, descr, fulldesc, color, simage, spawnfirst, max, wins, winmax, bridier, utime, " \
+               "timelimit, overtime, weekend, fromhr, tohr, udelay, availrestrict, tradeinrestrict, inittech, tmult, " \
+               "initcloak, maxship, stargate, jumpgate, engloss, jumploss, morphloss, carloss, morpherbuild, " \
+               "morphermaint, builderbuild, buildermaint, jumpgatebuild, jumpgatemaint, carrierbuild, carriermaint, plabuild, avgag, avgmin, avgfuel, rangeag, " \
+               "rangemin, rangefuel, homeag, homemin, homefuel, maxag, minbuild, smin, smax, layout, pmax, maxallies, blood, surrdraw, blind, vis, visp) " \
                "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, " \
-               "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-        data=(name, color, short_descr, long_descr, update_time, time_limit, overtime_update_time, updates_weekend, updates_period_from,
-              updates_period_to, delay_first_update, technologies_restricted_allowed, trade_ins_technologies_restricted, divider_range_stargate,
-              divider_range_jumpgate, max_ship_player, loss_engineer, loss_jumpgate, loss_morpher, loss_carrier, cost_construction_morpher,
-              cost_maintenance_morpher, cost_maintenance_morpher, cost_construction_builder, cost_maintenance_builder, cost_construction_jumpgate,
-              cost_maintenance_jumpgate, cost_construction_carrier, cost_maintenance_carrier, farming_minimum, farming_range, mineral_minimum,
-              mineral_range, fuel_minimum, fuel_range, farming_homeworld, mineral_homeworld, fuel_homeworld, cost_building_planet,
-              population_min_build_ship, number_max_current_game, spawn_first, active_bridier, alliance_trade_truce, number_max_allies,
-              allow_surrender_draw, viewable_players, cloakers_invisibles, constructions_visible, layout, blind_until_start, number_max_player,
-              number_systems_min, number_systems_max, farming_ratio_max, technology_multiplier, initial_technological_level, minimum_wins,
-              maximum_wins)
+               "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+        data=(sname, descr, fulldesc, color, simage, spawnfirst, max, wins, winmax, bridier, utime, timelimit, overtime, weekend ,fromhr, tohr, udelay,
+              availrestrict, tradeinrestrict, inittech, tmult, initcloak, maxship, stargate, jumpgate, engloss, jumploss, morphloss, carloss,
+              morpherbuild, morphermaint, builderbuild, buildermaint, jumpgatebuild, jumpgatemaint, carrierbuild, carriermaint, plabuild, avgag, avgmin, avgfuel, rangeag,
+              rangemin, rangefuel, homeag, homemin, homefuel, maxag, minbuild, smin, smax, layout, pmax, maxallies, blood, surrdraw, blind, vis, visp)
 
         cursor = conn.cursor()
         cursor.execute(query, data)
