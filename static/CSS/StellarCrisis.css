@@ -34,7 +34,7 @@ input{
     margin: 5px;
 }
 /* Table */
-table {
+.table {
     margin-top: 25px;
     border-collapse: collapse;
     width: 100%;
@@ -48,12 +48,12 @@ table {
   color: #fff;
 }
 
-th {
+.table th {
   background-color: #222;
   color: #fff;
 }
 
-td {
+.table td {
   background-color: #0c1b33;
 }
 

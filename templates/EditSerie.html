@@ -100,7 +100,7 @@
         </select><br>
 
         <label>Maximum number of ships per player:</label>
-        <input type="number" id="max_ship_player" name="max_ship_player" min="0" placeholder="0 = unlimited"><br> <!-- Table series : maxship -->
+        <input type="number" id="max_ship_player" name="max_ship_player" min="0" placeholder="0 = unlimited" value="{{ serie[25] }}"><br> <!-- Table series : maxship -->
 
         <label>Stargate'range divider:</label>
         <input type="number" id="divider_range_stargate" name="divider_range_stargate" min="0" placeholder="0 = unlimited" value="{{ serie[26] }}"><br> <!-- Table series : stargate -->
@@ -127,16 +127,16 @@
                 <td>Morphers maintenance :</td>
             </tr>
             <tr>
-                <td><input type="number" id="cost_construction_morpher" name="cost_construction_morpher" min="0" required></td> <!-- Table series : morpherbuild -->
-                <td><input type="number" id="cost_maintenance_morpher" name="cost_maintenance_morpher" min="0" required></td> <!-- Table series : morphermaint -->
+                <td><input type="number" id="cost_construction_morpher" name="cost_construction_morpher" min="0" value="{{ serie[32] }}"></td> <!-- Table series : morpherbuild -->
+                <td><input type="number" id="cost_maintenance_morpher" name="cost_maintenance_morpher" min="0" value="{{ serie[33] }}"></td> <!-- Table series : morphermaint -->
             </tr>
             <tr>
                 <td>Builder construction :</td>
                 <td>Builder maintenance :</td>
             </tr>
             <tr>
-                <td><input type="number" id="cost_construction_builder" name="cost_construction_builder" min="0" required></td> <!-- Table series : builderbuild -->
-                <td><input type="number" id="cost_maintenance_builder" name="cost_maintenance_builder" min="0" required></td> <!-- Table series : buildermaint -->
+                <td><input type="number" id="cost_construction_builder" name="cost_construction_builder" min="0" value="{{ serie[34] }}"></td> <!-- Table series : builderbuild -->
+                <td><input type="number" id="cost_maintenance_builder" name="cost_maintenance_builder" min="0" value="{{ serie[35] }}"></td> <!-- Table series : buildermaint -->
             </tr>
             <tr>
                 <td>Jumpgate construction :</td>
@@ -151,12 +151,12 @@
                 <td>Carrier maintenance :</td>
             </tr>
             <tr>
-                <td><input type="number" id="cost_construction_carrier" name="cost_construction_carrier" min="0" required></td> <!-- Table series : carrierbuild -->
-                <td><input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" min="0" required></td> <!-- Table series : carriermaint -->
+                <td><input type="number" id="cost_construction_carrier" name="cost_construction_carrier" min="0" value="{{ serie[38] }}"></td> <!-- Table series : carrierbuild -->
+                <td><input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" min="0" value="{{ serie[39] }}"></td> <!-- Table series : carriermaint -->
             </tr>
             <tr>
                 <td>Cost of building a planet:</td>
-                <td><input type="number" id="cost_building_planet" name="cost_building_planet" min="0" required></td> <!-- Table series : plabuild -->
+                <td><input type="number" id="cost_building_planet" name="cost_building_planet" min="0" value="{{ serie[40] }}"></td> <!-- Table series : plabuild -->
             </tr>
             <h1>Ore,Fuel,Farm</h1>
             <tr>
@@ -167,72 +167,72 @@
                 <td>Farming range :</td>
             </tr>
             <tr>
-                <td><input type="number" id="farming_minimum" name="farming_minimum" required></td> <!-- Table series : avgag -->
-                <td><input type="number" id="farming_range" name="farming_range" required></td> <!-- Table series : rangeag -->
+                <td><input type="number" id="farming_minimum" name="farming_minimum" value="{{ serie[41] }}"></td> <!-- Table series : avgag -->
+                <td><input type="number" id="farming_range" name="farming_range" value="{{ serie[44] }}"></td> <!-- Table series : rangeag -->
             </tr>
             <tr>
                 <td>Mineral minimum :</td>
                 <td>Mineral range :</td>
             </tr>
             <tr>
-                <td><input type="number" id="mineral_minimum" name="mineral_minimum" min="0" required></td> <!-- Table series : avgmin -->
-                <td><input type="number" id="mineral_range" name="mineral_range" min="0" required></td> <!-- Table series : rangemin -->
+                <td><input type="number" id="mineral_minimum" name="mineral_minimum" min="0" value="{{ serie[42] }}"></td> <!-- Table series : avgmin -->
+                <td><input type="number" id="mineral_range" name="mineral_range" min="0" value="{{ serie[45] }}"></td> <!-- Table series : rangemin -->
             </tr>
             <tr>
                 <td>Fuel minimum :</td>
                 <td>Fuel range :</td>
             </tr>
             <tr>
-                <td><input type="number" id="fuel_minimum" name="fuel_minimum" min="0" required></td> <!-- Table series : avgfuel -->
-                <td><input type="number" id="fuel_range" name="fuel_range" min="0" required></td> <!-- Table series : rangemin -->
+                <td><input type="number" id="fuel_minimum" name="fuel_minimum" min="0" value="{{ serie[43] }}"></td> <!-- Table series : avgfuel -->
+                <td><input type="number" id="fuel_range" name="fuel_range" min="0" value="{{ serie[46] }}"></td> <!-- Table series : rangemin -->
             </tr>
     </table>
 
     <label>Farming, Mineral and Fuel of the HomeWorld:</label><br>
-    <input type="number" id="farming_homeworld" name="farming_homeworld" min="0" required> <!-- Table series : homeag -->
-    <input type="number" id="mineral_homeworld" name="mineral_homeworld" min="0" required> <!-- Table series : homemin -->
-    <input type="number" id="fuel_homeworld" name="fuel_homeworld" min="0" required><br> <!-- Table series : homefuel -->
+    <input type="number" id="farming_homeworld" name="farming_homeworld" min="0" value="{{ serie[47] }}"> <!-- Table series : homeag -->
+    <input type="number" id="mineral_homeworld" name="mineral_homeworld" min="0" value="{{ serie[48] }}"> <!-- Table series : homemin -->
+    <input type="number" id="fuel_homeworld" name="fuel_homeworld" min="0" value="{{ serie[49] }}"><br> <!-- Table series : homefuel -->
 
     <label>Farming ratio maximum:</label>
-    <input type="number" id="farming_ratio_max" name="farming_ratio_max" min="0" required><br> <!-- Table series : maxag -->
+    <input type="number" id="farming_ratio_max" name="farming_ratio_max" min="0" value="{{ serie[50] }}"><br> <!-- Table series : maxag -->
 
     <label>Minimum population to build a ship:</label>
-    <input type="number" id="population_min_build_ship" name="population_min_build_ship" min="0" required><br> <!-- Table series : minbuild -->
+    <input type="number" id="population_min_build_ship" name="population_min_build_ship" min="0" value="{{ serie[51] }}"><br> <!-- Table series : minbuild -->
 
     <label>Minimum and maximum number of systems per player:</label><br>
-    <input type="number" id="number_systems_min" name="number_systems_min" min="0" required> <!-- Table series : smin -->
-    <input type="number" id="number_systems_max" name="number_systems_max" min="0" required><br> <!-- Table series : smax -->
+    <input type="number" id="number_systems_min" name="number_systems_min" min="0" value="{{ serie[52] }}"> <!-- Table series : smin -->
+    <input type="number" id="number_systems_max" name="number_systems_max" min="0" value="{{ serie[53] }}"><br> <!-- Table series : smax -->
 
     <label>Layout:</label>
-    <select id="layout" name="layout" required> <!-- Table series : layout -->
-        <option value="1">Classic</option>
-        <option value="2">Mirror (Only 2 Player)</option>
+    <select id="layout" name="layout"> <!-- Table series : layout -->
+        <option value="1" {% if serie[54] == 1 %}selected{% endif %}>Classic</option>
+        <option value="2" {% if serie[54] == 2 %}selected{% endif %}>Mirror (Only 2 Player)</option>
     </select><br>
 
     <h1>Other</h1><br>
     <label>Maximum number of players in the game:</label>
-    <input type="number" id="number_max_player" name="number_max_player" min="2" required><br> <!-- Table series : pmax -->
+    <input type="number" id="number_max_player" name="number_max_player" min="2" value="{{ serie[55] }}"><br> <!-- Table series : pmax -->
 
     <label>Maximum number of allies:</label>
-    <input type="number" id="number_max_allies" name="number_max_allies" min="0" required><br> <!-- Table series : maxallies -->
+    <input type="number" id="number_max_allies" name="number_max_allies" min="0" value="{{ serie[56] }}"><br> <!-- Table series : maxallies -->
 
     <label>Allow Alliance/Trade/Truce:</label>
-    <select id="alliance_trade_truce" name="alliance_trade_truce" required> <!-- Table series : blood -->
-        <option value="0">Yes</option>
-        <option value="1">No</option>
-        <option value="2">Only Trade/Truce</option>
+    <select id="alliance_trade_truce" name="alliance_trade_truce"> <!-- Table series : blood -->
+        <option value="0" {% if serie[57] == 0 %}selected{% endif %}>Yes</option>
+        <option value="1" {% if serie[57] == 1 %}selected{% endif %}>No</option>
+        <option value="2" {% if serie[57] == 2 %}selected{% endif %}>Only Trade/Truce</option>
     </select><br>
 
     <label>Allow Surrender/Draw:</label>
-    <select id="allow_surrender_draw" name="allow_surrender_draw" required> <!-- Table series : surrdraw -->
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+    <select id="allow_surrender_draw" name="allow_surrender_draw"> <!-- Table series : surrdraw -->
+        <option value="1" {% if serie[58] == 1 %}selected{% endif %}>Yes</option>
+        <option value="0" {% if serie[58] == 0 %}selected{% endif %}>No</option>
     </select><br>
 
     <label>Blind until the game starts?</label>
-    <select id="blind_until_start" name="blind_until_start" required> <!-- Table series : blind -->
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+    <select id="blind_until_start" name="blind_until_start"> <!-- Table series : blind -->
+        <option value="1" {% if serie[59] == 1 %}selected{% endif %}>Yes</option>
+        <option value="0" {% if serie[59] == 0 %}selected{% endif %}>No</option>
     </select><br>
 
     <label>Are the construction waiting visible?</label>
