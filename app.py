@@ -52,7 +52,6 @@ def LogIn():
             else:
                 session["User"] = user
                 return redirect(url_for("UserPage"))
-
     else:
         return render_template("LogIn.html")
 
@@ -158,7 +157,36 @@ def CreateSeries():
 
 @app.route("/ListSeries", methods=['GET', 'POST'])
 def ListSeries():
-    return render_template("ListSeries.html")
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "SELECT * FROM series ORDER BY sid"
+    cursor = conn.cursor()
+    cursor.execute(query)
+    series = cursor.fetchall()
+    return render_template("ListSeries.html", series=series)
+
+@app.route("/EditSerie/<sid>", methods=['GET', 'POST'])
+def EditSerie(sid):
+    if request.method=="POST":
+        conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                                password="graiple56laibla")
+        query = "Update serie set uname = %s, realname = %s, email = %s, showemail = %s, passwd = %s, cmt = %s, "\
+                "victory = %s, wins = %s, kills = %s, killed = %s, ruined = %s, alien = %s, bridieridx = %s, " \
+                "bridierrank = %s, maxepow = %s, maxmpow = %s WHERE pid=%s"
+        data = ()
+        cursor = conn.cursor()
+        cursor.execute(query, data)
+        conn.commit()
+        return redirect(url_for("CheckEmpire"))
+    else:
+        conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                                password="graiple56laibla")
+        query = "Select * FROM serie WHERE sid= %s"
+        data = (sid,)
+        cursor = conn.cursor()
+        cursor.execute(query, data)
+        serie = cursor.fetchone()
+        return render_template("EditSerie.html", serie=serie)
 
 @app.route("/Broadcast", methods=['GET', 'POST'])
 def Broadcast():

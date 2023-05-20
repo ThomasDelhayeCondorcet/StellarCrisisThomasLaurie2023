@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Serie</title>
+    <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+</head>
+<body>
+<header>
+        <div class="topNav">
+            <a href="/CreateSeries">Create series</a>
+            <a href="/ListSeries">List series</a>
+            <a href="/CheckEmpire">Check empire</a>
+            <a href="/Broadcast">Broadcast</a>
+            <a href="/LogOut">Log Out</a>
+        </div>
+</header>>
+<br>
+    <form action="" method="post">
+        <h1>Global parameter</h1><br>
+        <label>Name of the game</label> <!-- Table series : sname -->
+        <input type="text" id="name" name="name" required><br>
+
+        <label>Short description</label> <!-- Table series : descr -->
+        <input type="text" id="short_descr" name="short_descr" required><br>
+
+        <label>Long description</label> <!-- Table series : fulldesc -->
+        <input type="text" id="long_descr" name="long_descr" required><br>
+
+        <label>Color of the game</label> <!-- Table series : color -->
+        <input type="color" id="color" name="color" required onchange="updateColor(this.value)" oninput="updateColor(this.value)"><br>
+
+        <label>Spawn First:</label> <!-- Table series : spawnfirst -->
+        <select id="spawn_first" name="spawn_first" required> <!-- Table series : spawnfirst -->
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+        </select><br>
+
+        <label>Maximum number of current games for this series:</label>
+        <input type="number" id="number_max_current_game" name="number_max_current_game" min="0" required><br> <!-- Table series : max -->
+
+        <label>Minimum and maximum wins to join:</label><br>
+        <input type="number" id="minimum_wins" name="minimum_wins" min="0" required> <!-- Table series : wins -->
+        <input type="number" id="maximum_wins" name="maximum_wins" min="0" required><br> <!-- Table series : winmax -->
+
+        <label>active bridier:</label>
+        <select id="active_bridier" name="active_bridier" required> <!-- Table series : bridier -->
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+        </select><br>
+
+        <h1>Update</h1><br>
+        <label>Update Time :</label>
+        <input type="number" id="update_time" name="update_time" min="0" max="24" required><br> <!-- Table series : utime -->
+
+        <label>Time limits :</label>
+        <input type="number" id="time_limit" name="time_limit" min="0" max="24" required><br> <!-- Table series : timelimit -->
+
+        <label>Overtime Update Time :</label>
+        <input type="number" id="overtime_update_time" name="overtime_update_time" min="0" max="24" required><br> <!-- Table series : overtime -->
+
+        <label>Updates on week-end:</label>
+        <input type="radio" id="updates_weekend_yes" name="updates_weekend" value="0" required> <!-- Table series : weekend -->
+        <label>Yes</label>
+        <input type="radio" id="updates_weekend_no" name="updates_weekend" value="1">
+        <label>No</label><br>
+
+        <label>Updates from ... to ...:</label>
+        <input type="number" id="updates_period_from" name="updates_period_from" min="0" max="24" placeholder="From" required> <!-- Table series : fromhr -->
+        <input type="number" id="updates_period_to" name="updates_period_to" min="0" max="24" placeholder="To" required><br> <!-- Table series : tohr -->
+
+        <label>Delay first update :</label>
+        <input type="number" id="delay_first_update" name="delay_first_update" min="0" max="24" required><br> <!-- Table series : udelay -->
+
+        <h1>Technology</h1><br>
+        <label>Number of restricted technologies allowed:</label>
+        <input type="number" id="technologies_restricted_allowed" name="technologies_restricted_allowed" min="0" required><br> <!-- Table series : availrestrict -->
+
+        <label>Number of Trade-Ins of restricted technologies:</label>
+        <input type="number" id="trade_ins_technologies_restricted" name="trade_ins_technologies_restricted" min="0" required><br> <!-- Table series : tradeinrestrict -->
+
+        <label>Initial technological level:</label>
+        <input type="number" id="initial_technological_level" name="initial_technological_level" min="1" required><br> <!-- Table series : inittech -->
+
+        <label>Technology multiplier:</label>
+        <input type="number" id="technology_multiplier:" name="technology_multiplier" min="1" required><br> <!-- Table series : tmult -->
+
+        <h1>Ship/planet</h1><br>
+        <label>Cloakers are invisibles when built ?</label>
+        <select id="cloakers_invisibles" name="cloakers_invisibles" required> <!-- Table series : initcloak -->
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select><br>
+
+        <label>Maximum number of ships per player:</label>
+        <input type="number" id="max_ship_player" name="max_ship_player" min="0" placeholder="0 = unlimited"><br> <!-- Table series : maxship -->
+
+        <label>Stargate'range divider:</label>
+        <input type="number" id="divider_range_stargate" name="divider_range_stargate" min="0" placeholder="0 = unlimited" required><br> <!-- Table series : stargate -->
+
+        <label>Jumpgate'range divider:</label>
+        <input type="number" id="divider_range_jumpgate" name="divider_range_jumpgate" min="1" required><br> <!-- Table series : jumpgate -->
+
+        <label>Loss when Engineer, Jumpgate, Morpher and Carrier activation:</label><br>
+        <label>Jumpgate :</label>
+        <input type="number" id="loss_jumpgate" name="loss_jumpgate" min="0" required><br> <!-- Table series : jumploss -->
+        <label>Engineer :</label>
+        <input type="number" id="loss_engineer" name="loss_engineer" min="0" required><br> <!-- Table series : engloss -->
+        <label>Morphers :</label>
+        <input type="number" id="loss_morpher" name="loss_morpher" min="0" required><br> <!-- Table series : morphloss -->
+        <label>Carrier :</label>
+        <input type="number" id="loss_carrier" name="loss_carrier" min="0" required><br> <!-- Table series : carloss -->
+
+        <table>
+            <tr>
+                <th colspan="2">Construction and maintenance costs of Morphers, Builders, Jumpgates et Carriers:</th>
+            </tr><br>
+            <tr>
+                <td>Morphers construction :</td>
+                <td>Morphers maintenance :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="cost_construction_morpher" name="cost_construction_morpher" min="0" required></td> <!-- Table series : morpherbuild -->
+                <td><input type="number" id="cost_maintenance_morpher" name="cost_maintenance_morpher" min="0" required></td> <!-- Table series : morphermaint -->
+            </tr>
+            <tr>
+                <td>Builder construction :</td>
+                <td>Builder maintenance :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="cost_construction_builder" name="cost_construction_builder" min="0" required></td> <!-- Table series : builderbuild -->
+                <td><input type="number" id="cost_maintenance_builder" name="cost_maintenance_builder" min="0" required></td> <!-- Table series : buildermaint -->
+            </tr>
+            <tr>
+                <td>Jumpgate construction :</td>
+                <td>Jumpgate maintenance :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="cost_construction_jumpgate" name="cost_construction_jumpgate" min="0" required></td> <!-- Table series : jumpgatebuild -->
+                <td><input type="number" id="cost_maintenance_jumpgate" name="cost_maintenance_jumpgate" min="0" required></td> <!-- Table series : jumpgatemaint -->
+            </tr>
+            <tr>
+                <td>Carrier construction :</td>
+                <td>Carrier maintenance :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="cost_construction_carrier" name="cost_construction_carrier" min="0" required></td> <!-- Table series : carrierbuild -->
+                <td><input type="number" id="cost_maintenance_carrier" name="cost_maintenance_carrier" min="0" required></td> <!-- Table series : carriermaint -->
+            </tr>
+            <tr>
+                <td>Cost of building a planet:</td>
+                <td><input type="number" id="cost_building_planet" name="cost_building_planet" min="0" required></td> <!-- Table series : plabuild -->
+            </tr>
+            <h1>Ore,Fuel,Farm</h1>
+            <tr>
+                <th colspan="2" style="text-align: left">Minimum and Range for resource averages:</th>
+            </tr><br>
+            <tr>
+                <td>Farming minimum :</td>
+                <td>Farming range :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="farming_minimum" name="farming_minimum" required></td> <!-- Table series : avgag -->
+                <td><input type="number" id="farming_range" name="farming_range" required></td> <!-- Table series : rangeag -->
+            </tr>
+            <tr>
+                <td>Mineral minimum :</td>
+                <td>Mineral range :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="mineral_minimum" name="mineral_minimum" min="0" required></td> <!-- Table series : avgmin -->
+                <td><input type="number" id="mineral_range" name="mineral_range" min="0" required></td> <!-- Table series : rangemin -->
+            </tr>
+            <tr>
+                <td>Fuel minimum :</td>
+                <td>Fuel range :</td>
+            </tr>
+            <tr>
+                <td><input type="number" id="fuel_minimum" name="fuel_minimum" min="0" required></td> <!-- Table series : avgfuel -->
+                <td><input type="number" id="fuel_range" name="fuel_range" min="0" required></td> <!-- Table series : rangemin -->
+            </tr>
+    </table>
+
+    <label>Farming, Mineral and Fuel of the HomeWorld:</label><br>
+    <input type="number" id="farming_homeworld" name="farming_homeworld" min="0" required> <!-- Table series : homeag -->
+    <input type="number" id="mineral_homeworld" name="mineral_homeworld" min="0" required> <!-- Table series : homemin -->
+    <input type="number" id="fuel_homeworld" name="fuel_homeworld" min="0" required><br> <!-- Table series : homefuel -->
+
+    <label>Farming ratio maximum:</label>
+    <input type="number" id="farming_ratio_max" name="farming_ratio_max" min="0" required><br> <!-- Table series : maxag -->
+
+    <label>Minimum population to build a ship:</label>
+    <input type="number" id="population_min_build_ship" name="population_min_build_ship" min="0" required><br> <!-- Table series : minbuild -->
+
+    <label>Minimum and maximum number of systems per player:</label><br>
+    <input type="number" id="number_systems_min" name="number_systems_min" min="0" required> <!-- Table series : smin -->
+    <input type="number" id="number_systems_max" name="number_systems_max" min="0" required><br> <!-- Table series : smax -->
+
+    <label>Layout:</label>
+    <select id="layout" name="layout" required> <!-- Table series : layout -->
+        <option value="1">Classic</option>
+        <option value="2">Mirror (Only 2 Player)</option>
+    </select><br>
+
+    <h1>Other</h1><br>
+    <label>Maximum number of players in the game:</label>
+    <input type="number" id="number_max_player" name="number_max_player" min="2" required><br> <!-- Table series : pmax -->
+
+    <label>Maximum number of allies:</label>
+    <input type="number" id="number_max_allies" name="number_max_allies" min="0" required><br> <!-- Table series : maxallies -->
+
+    <label>Allow Alliance/Trade/Truce:</label>
+    <select id="alliance_trade_truce" name="alliance_trade_truce" required> <!-- Table series : blood -->
+        <option value="0">Yes</option>
+        <option value="1">No</option>
+        <option value="2">Only Trade/Truce</option>
+    </select><br>
+
+    <label>Allow Surrender/Draw:</label>
+    <select id="allow_surrender_draw" name="allow_surrender_draw" required> <!-- Table series : surrdraw -->
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select><br>
+
+    <label>Blind until the game starts?</label>
+    <select id="blind_until_start" name="blind_until_start" required> <!-- Table series : blind -->
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select><br>
+
+    <label>Are the construction waiting visible?</label>
+    <select id="constructions_visible" name="constructions_visible" required> <!-- Table series : vis -->
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select><br>
+
+    <label>List of players of the game visible in the game list:</label>
+    <select id="viewable_players" name="viewable_players" required> <!-- Table series : visp -->
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+    </select><br>
+
+    <input type="submit" value="Edit serie">
+</form>
+</body>
+</html>
