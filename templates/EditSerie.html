@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title>Edit Serie</title>
     <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+    <script>
+    function updateColor(value) {
+        var colorInput = document.getElementById('color');
+        colorInput.style.backgroundColor = value;
+        colorInput.style.backgroundImage = 'none';
+    }
+    </script>
 </head>
 <body>
 <header>
@@ -14,102 +21,102 @@
             <a href="/Broadcast">Broadcast</a>
             <a href="/LogOut">Log Out</a>
         </div>
-</header>>
+</header>
 <br>
     <form action="" method="post">
         <h1>Global parameter</h1><br>
         <label>Name of the game</label> <!-- Table series : sname -->
-        <input type="text" id="name" name="name" required><br>
+        <input type="text" id="name" name="name" value="{{ serie[1] }}"><br>
 
         <label>Short description</label> <!-- Table series : descr -->
-        <input type="text" id="short_descr" name="short_descr" required><br>
+        <input type="text" id="short_descr" name="short_descr" value="{{ serie[2] }}" ><br>
 
         <label>Long description</label> <!-- Table series : fulldesc -->
-        <input type="text" id="long_descr" name="long_descr" required><br>
+        <input type="text" id="long_descr" name="long_descr" value="{{ serie[3] }}" ><br>
 
         <label>Color of the game</label> <!-- Table series : color -->
-        <input type="color" id="color" name="color" required onchange="updateColor(this.value)" oninput="updateColor(this.value)"><br>
+        <input type="color" id="color" name="color" value="{{ serie[4] }}"  onchange="updateColor(this.value)" oninput="updateColor(this.value)"><br>
 
         <label>Spawn First:</label> <!-- Table series : spawnfirst -->
-        <select id="spawn_first" name="spawn_first" required> <!-- Table series : spawnfirst -->
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+        <select id="spawn_first" name="spawn_first"> <!-- Table series : spawnfirst -->
+            <option value="1" {% if serie[8] == 1 %}selected{% endif %}>Yes</option>
+            <option value="0" {% if serie[8] == 2 %}selected{% endif %}>No</option>
         </select><br>
 
         <label>Maximum number of current games for this series:</label>
-        <input type="number" id="number_max_current_game" name="number_max_current_game" min="0" required><br> <!-- Table series : max -->
+        <input type="number" id="number_max_current_game" name="number_max_current_game" min="0" value="{{ serie[9] }}"><br> <!-- Table series : max -->
 
         <label>Minimum and maximum wins to join:</label><br>
-        <input type="number" id="minimum_wins" name="minimum_wins" min="0" required> <!-- Table series : wins -->
-        <input type="number" id="maximum_wins" name="maximum_wins" min="0" required><br> <!-- Table series : winmax -->
+        <input type="number" id="minimum_wins" name="minimum_wins" min="0" value="{{ serie[10] }}"> <!-- Table series : wins -->
+        <input type="number" id="maximum_wins" name="maximum_wins" min="0" value="{{ serie[11] }}"><br> <!-- Table series : winmax -->
 
         <label>active bridier:</label>
-        <select id="active_bridier" name="active_bridier" required> <!-- Table series : bridier -->
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+        <select id="active_bridier" name="active_bridier" > <!-- Table series : bridier -->
+            <option value="1" {% if serie[12] == 1 %}selected{% endif %}>Yes</option>
+            <option value="0" {% if serie[12] == 0 %}selected{% endif %}>No</option>
         </select><br>
 
         <h1>Update</h1><br>
         <label>Update Time :</label>
-        <input type="number" id="update_time" name="update_time" min="0" max="24" required><br> <!-- Table series : utime -->
+        <input type="number" id="update_time" name="update_time" min="0" max="24" value="{{ serie[13] }}"><br> <!-- Table series : utime -->
 
         <label>Time limits :</label>
-        <input type="number" id="time_limit" name="time_limit" min="0" max="24" required><br> <!-- Table series : timelimit -->
+        <input type="number" id="time_limit" name="time_limit" min="0" max="24" value="{{ serie[14] }}"><br> <!-- Table series : timelimit -->
 
         <label>Overtime Update Time :</label>
-        <input type="number" id="overtime_update_time" name="overtime_update_time" min="0" max="24" required><br> <!-- Table series : overtime -->
+        <input type="number" id="overtime_update_time" name="overtime_update_time" min="0" max="24" value="{{ serie[15] }}"><br> <!-- Table series : overtime -->
 
         <label>Updates on week-end:</label>
-        <input type="radio" id="updates_weekend_yes" name="updates_weekend" value="0" required> <!-- Table series : weekend -->
+        <input type="radio" id="updates_weekend_yes" name="updates_weekend" value="0" {% if serie[16] == 1 %}checked{% endif %}> <!-- Table series : weekend -->
         <label>Yes</label>
-        <input type="radio" id="updates_weekend_no" name="updates_weekend" value="1">
+        <input type="radio" id="updates_weekend_no" name="updates_weekend" value="1" {% if serie[16] == 0 %}checked{% endif %}>
         <label>No</label><br>
 
         <label>Updates from ... to ...:</label>
-        <input type="number" id="updates_period_from" name="updates_period_from" min="0" max="24" placeholder="From" required> <!-- Table series : fromhr -->
-        <input type="number" id="updates_period_to" name="updates_period_to" min="0" max="24" placeholder="To" required><br> <!-- Table series : tohr -->
+        <input type="number" id="updates_period_from" name="updates_period_from" min="0" max="24" placeholder="From" value="{{ serie[17] }}"> <!-- Table series : fromhr -->
+        <input type="number" id="updates_period_to" name="updates_period_to" min="0" max="24" placeholder="To" value="{{ serie[18] }}"><br> <!-- Table series : tohr -->
 
         <label>Delay first update :</label>
-        <input type="number" id="delay_first_update" name="delay_first_update" min="0" max="24" required><br> <!-- Table series : udelay -->
+        <input type="number" id="delay_first_update" name="delay_first_update" min="0" max="24" value="{{ serie[19] }}"><br> <!-- Table series : udelay -->
 
         <h1>Technology</h1><br>
         <label>Number of restricted technologies allowed:</label>
-        <input type="number" id="technologies_restricted_allowed" name="technologies_restricted_allowed" min="0" required><br> <!-- Table series : availrestrict -->
+        <input type="number" id="technologies_restricted_allowed" name="technologies_restricted_allowed" min="0" value="{{ serie[20] }}"><br> <!-- Table series : availrestrict -->
 
         <label>Number of Trade-Ins of restricted technologies:</label>
-        <input type="number" id="trade_ins_technologies_restricted" name="trade_ins_technologies_restricted" min="0" required><br> <!-- Table series : tradeinrestrict -->
+        <input type="number" id="trade_ins_technologies_restricted" name="trade_ins_technologies_restricted" min="0" value="{{ serie[21] }}"><br> <!-- Table series : tradeinrestrict -->
 
         <label>Initial technological level:</label>
-        <input type="number" id="initial_technological_level" name="initial_technological_level" min="1" required><br> <!-- Table series : inittech -->
+        <input type="number" id="initial_technological_level" name="initial_technological_level" min="1" value="{{ serie[22] }}"><br> <!-- Table series : inittech -->
 
         <label>Technology multiplier:</label>
-        <input type="number" id="technology_multiplier:" name="technology_multiplier" min="1" required><br> <!-- Table series : tmult -->
+        <input type="number" id="technology_multiplier:" name="technology_multiplier" min="1" value="{{ serie[23] }}"><br> <!-- Table series : tmult -->
 
         <h1>Ship/planet</h1><br>
         <label>Cloakers are invisibles when built ?</label>
-        <select id="cloakers_invisibles" name="cloakers_invisibles" required> <!-- Table series : initcloak -->
-            <option value="1">Yes</option>
-            <option value="0">No</option>
+        <select id="cloakers_invisibles" name="cloakers_invisibles"> <!-- Table series : initcloak -->
+            <option value="1" {% if serie[24] == 1 %}selected{% endif %}24>Yes</option>
+            <option value="0" {% if serie[24] == 0 %}selected{% endif %}>No</option>
         </select><br>
 
         <label>Maximum number of ships per player:</label>
         <input type="number" id="max_ship_player" name="max_ship_player" min="0" placeholder="0 = unlimited"><br> <!-- Table series : maxship -->
 
         <label>Stargate'range divider:</label>
-        <input type="number" id="divider_range_stargate" name="divider_range_stargate" min="0" placeholder="0 = unlimited" required><br> <!-- Table series : stargate -->
+        <input type="number" id="divider_range_stargate" name="divider_range_stargate" min="0" placeholder="0 = unlimited" value="{{ serie[26] }}"><br> <!-- Table series : stargate -->
 
         <label>Jumpgate'range divider:</label>
-        <input type="number" id="divider_range_jumpgate" name="divider_range_jumpgate" min="1" required><br> <!-- Table series : jumpgate -->
+        <input type="number" id="divider_range_jumpgate" name="divider_range_jumpgate" min="1" value="{{ serie[27] }}"><br> <!-- Table series : jumpgate -->
 
         <label>Loss when Engineer, Jumpgate, Morpher and Carrier activation:</label><br>
         <label>Jumpgate :</label>
-        <input type="number" id="loss_jumpgate" name="loss_jumpgate" min="0" required><br> <!-- Table series : jumploss -->
+        <input type="number" id="loss_jumpgate" name="loss_jumpgate" min="0" value="{{ serie[29] }}"><br> <!-- Table series : jumploss -->
         <label>Engineer :</label>
-        <input type="number" id="loss_engineer" name="loss_engineer" min="0" required><br> <!-- Table series : engloss -->
+        <input type="number" id="loss_engineer" name="loss_engineer" min="0" value="{{ serie[28] }}"><br> <!-- Table series : engloss -->
         <label>Morphers :</label>
-        <input type="number" id="loss_morpher" name="loss_morpher" min="0" required><br> <!-- Table series : morphloss -->
+        <input type="number" id="loss_morpher" name="loss_morpher" min="0" value="{{ serie[30] }}"><br> <!-- Table series : morphloss -->
         <label>Carrier :</label>
-        <input type="number" id="loss_carrier" name="loss_carrier" min="0" required><br> <!-- Table series : carloss -->
+        <input type="number" id="loss_carrier" name="loss_carrier" min="0" value="{{ serie[31] }}"><br> <!-- Table series : carloss -->
 
         <table>
             <tr>
@@ -136,8 +143,8 @@
                 <td>Jumpgate maintenance :</td>
             </tr>
             <tr>
-                <td><input type="number" id="cost_construction_jumpgate" name="cost_construction_jumpgate" min="0" required></td> <!-- Table series : jumpgatebuild -->
-                <td><input type="number" id="cost_maintenance_jumpgate" name="cost_maintenance_jumpgate" min="0" required></td> <!-- Table series : jumpgatemaint -->
+                <td><input type="number" id="cost_construction_jumpgate" name="cost_construction_jumpgate" min="0" value="{{ serie[36] }}"></td> <!-- Table series : jumpgatebuild -->
+                <td><input type="number" id="cost_maintenance_jumpgate" name="cost_maintenance_jumpgate" min="0" value="{{ serie[37] }}"></td> <!-- Table series : jumpgatemaint -->
             </tr>
             <tr>
                 <td>Carrier construction :</td>
@@ -229,15 +236,15 @@
     </select><br>
 
     <label>Are the construction waiting visible?</label>
-    <select id="constructions_visible" name="constructions_visible" required> <!-- Table series : vis -->
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+    <select id="constructions_visible" name="constructions_visible"> <!-- Table series : vis -->
+        <option value="1" {% if serie[60] == 1 %}selected{% endif %}>Yes</option>
+        <option value="0" {% if serie[60] == 0 %}selected{% endif %}>No</option>
     </select><br>
 
     <label>List of players of the game visible in the game list:</label>
-    <select id="viewable_players" name="viewable_players" required> <!-- Table series : visp -->
-        <option value="1">Yes</option>
-        <option value="0">No</option>
+    <select id="viewable_players" name="viewable_players"> <!-- Table series : visp -->
+        <option value="1" {% if serie[61] == 1 %}selected{% endif %}>Yes</option>
+        <option value="0" {% if serie[61] == 0 %}selected{% endif %}>No</option>
     </select><br>
 
     <input type="submit" value="Edit serie">

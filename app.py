@@ -168,25 +168,132 @@ def ListSeries():
 @app.route("/EditSerie/<sid>", methods=['GET', 'POST'])
 def EditSerie(sid):
     if request.method=="POST":
+        sname = request.form['name']
+        descr = request.form['short_descr']
+        fulldesc = request.form['long_descr']
+        color = request.form['color']
+        simage = "empty.gif"
+        spawnfirst = request.form['spawn_first']
+        max = request.form['number_max_current_game']
+        wins = request.form['minimum_wins']
+        winmax = request.form['maximum_wins']
+        bridier = request.form['active_bridier']
+
+        # Update
+        utime = request.form['update_time']
+        timelimit = request.form['time_limit']
+        overtime = request.form['overtime_update_time']
+        weekend = request.form['updates_weekend']
+        fromhr = request.form['updates_period_from']
+        tohr = request.form['updates_period_to']
+        udelay = request.form['delay_first_update']
+
+        # Techno
+        availrestrict = request.form['technologies_restricted_allowed']
+        tradeinrestrict = request.form['trade_ins_technologies_restricted']
+        inittech = request.form['initial_technological_level']
+        tmult = request.form['technology_multiplier']
+
+        # Ship
+        initcloak = request.form['cloakers_invisibles']
+        maxship = request.form['max_ship_player']
+        stargate = request.form['divider_range_stargate']
+        jumpgate = request.form['divider_range_jumpgate']
+        engloss = request.form['loss_engineer']
+        jumploss = request.form['loss_jumpgate']
+        morphloss = request.form['loss_morpher']
+        carloss = request.form['loss_carrier']
+        morpherbuild = request.form['cost_construction_morpher']
+        morphermaint = request.form['cost_maintenance_morpher']
+        builderbuild = request.form['cost_construction_builder']
+        buildermaint = request.form['cost_maintenance_builder']
+        jumpgatebuild = request.form['cost_construction_jumpgate']
+        jumpgatemaint = request.form['cost_maintenance_jumpgate']
+        carrierbuild = request.form['cost_construction_carrier']
+        carriermaint = request.form['cost_maintenance_carrier']
+        plabuild = request.form['cost_building_planet']
+
+        # ore, fuell,..
+        avgag = request.form['farming_minimum']
+        avgmin = request.form['mineral_minimum']
+        avgfuel = request.form['fuel_minimum']
+        rangeag = request.form['farming_range']
+        rangemin = request.form['mineral_range']
+        rangefuel = request.form['fuel_range']
+        homeag = request.form['farming_homeworld']
+        homemin = request.form['mineral_homeworld']
+        homefuel = request.form['fuel_homeworld']
+        maxag = request.form['farming_ratio_max']
+        minbuild = request.form['population_min_build_ship']
+        smin = request.form['number_systems_min']
+        smax = request.form['number_systems_max']
+        layout = request.form['layout']
+
+        # Other
+        pmax = request.form['number_max_player']
+        maxallies = request.form['number_max_allies']
+        blood = request.form['alliance_trade_truce']
+        surrdraw = request.form['allow_surrender_draw']
+        blind = request.form['blind_until_start']
+        vis = request.form['constructions_visible']
+        visp = request.form['viewable_players']
+
         conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
                                 password="graiple56laibla")
-        query = "Update serie set uname = %s, realname = %s, email = %s, showemail = %s, passwd = %s, cmt = %s, "\
-                "victory = %s, wins = %s, kills = %s, killed = %s, ruined = %s, alien = %s, bridieridx = %s, " \
-                "bridierrank = %s, maxepow = %s, maxmpow = %s WHERE pid=%s"
-        data = ()
+        query ="Update series SET sname= %s, descr= %s, fulldesc= %s, color= %s, simage= %s, spawnfirst= %s, max= %s, wins= %s, " \
+               "winmax= %s, bridier= %s, utime= %s, timelimit= %s, overtime= %s, weekend= %s, fromhr= %s, tohr= %s, " \
+               "udelay= %s, availrestrict= %s, tradeinrestrict= %s, inittech= %s, tmult= %s, initcloak= %s, maxship= %s, " \
+               "stargate= %s, jumpgate= %s, engloss= %s, jumploss= %s, morphloss= %s, carloss= %s, morpherbuild= %s, " \
+               "morphermaint= %s, builderbuild= %s, buildermaint= %s, jumpgatebuild= %s, jumpgatemaint= %s, carrierbuild= %s, " \
+               "carriermaint= %s, plabuild= %s, avgag= %s, avgmin= %s, avgfuel= %s, rangeag= %s, rangemin= %s, rangefuel= %s, " \
+               "homeag= %s, homemin= %s, homefuel= %s, maxag= %s, minbuild= %s, smin= %s, smax= %s, layout= %s, pmax= %s, " \
+               "maxallies= %s, blood= %s, surrdraw= %s, blind= %s, vis= %s, visp= %s WHERE sid=%s"
+
+        data = ( sname, descr, fulldesc, color, simage, spawnfirst, max, wins, winmax, bridier, utime, timelimit, overtime,
+                 weekend, fromhr, tohr, udelay, availrestrict, tradeinrestrict, inittech, tmult, initcloak, maxship, stargate,
+                 jumpgate, engloss, jumploss, morphloss, carloss, morpherbuild, morphermaint, builderbuild, buildermaint, jumpgatebuild,
+                 jumpgatemaint, carrierbuild, carriermaint, plabuild, avgag, avgmin, avgfuel, rangeag, rangemin, rangefuel, homeag,
+                 homemin, homefuel, maxag, minbuild, smin, smax, layout, pmax, maxallies, blood, surrdraw, blind, vis, visp, sid)
         cursor = conn.cursor()
         cursor.execute(query, data)
         conn.commit()
-        return redirect(url_for("CheckEmpire"))
+        return redirect(url_for("ListSeries"))
     else:
         conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
                                 password="graiple56laibla")
-        query = "Select * FROM serie WHERE sid= %s"
+        query = "Select * FROM series WHERE sid= %s"
         data = (sid,)
         cursor = conn.cursor()
         cursor.execute(query, data)
         serie = cursor.fetchone()
         return render_template("EditSerie.html", serie=serie)
+@app.route("/RespawnSerie/<sid>", methods=['GET', 'POST'])
+def RespawnSeries(sid):
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "Select * FROM series WHERE sid= %s"
+    data = (sid,)
+    cursor = conn.cursor()
+    cursor.execute(query, data)
+    serie = cursor.fetchone()
+    cursor.close()
+    query2= "Insert into series (sname, descr, fulldesc, color, simage, spawnfirst, max, wins, winmax, bridier, utime, " \
+               "timelimit, overtime, weekend, fromhr, tohr, udelay, availrestrict, tradeinrestrict, inittech, tmult, " \
+               "initcloak, maxship, stargate, jumpgate, engloss, jumploss, morphloss, carloss, morpherbuild, " \
+               "morphermaint, builderbuild, buildermaint, jumpgatebuild, jumpgatemaint, carrierbuild, carriermaint, plabuild, avgag, avgmin, avgfuel, rangeag, " \
+               "rangemin, rangefuel, homeag, homemin, homefuel, maxag, minbuild, smin, smax, layout, pmax, maxallies, blood, surrdraw, blind, vis, visp) " \
+               "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, " \
+               "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    data2=(serie[1], serie[2], serie[3], serie[4], "empty.gif",serie[8], serie[9], serie[10], serie[11], serie[12],
+           serie[13], serie[14], serie[15], serie[16], serie[17], serie[18], serie[19], serie[20], serie[21], serie[22],
+           serie[23], serie[24], serie[25], serie[26], serie[27], serie[28], serie[29], serie[30], serie[31], serie[32],
+           serie[33], serie[34], serie[35], serie[36], serie[37], serie[38], serie[39], serie[40], serie[41],  serie[42],
+           serie[43], serie[44], serie[45], serie[46], serie[47], serie[48], serie[49], serie[50], serie[51], serie[52],
+           serie[53], serie[54], serie[55], serie[56], serie[57], serie[58], serie[59], serie[60], serie[61])
+    cursor2 = conn.cursor()
+    cursor2.execute(query2,data2)
+    conn.commit()
+    return redirect(url_for("ListSeries"))
 
 @app.route("/Broadcast", methods=['GET', 'POST'])
 def Broadcast():
