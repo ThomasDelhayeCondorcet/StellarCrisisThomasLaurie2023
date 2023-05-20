@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <title>Create series</title>
     <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+    <script>
+    function updateColor(value) {
+    var colorInput = document.getElementById('color');
+    colorInput.style.backgroundColor = value;
+    colorInput.style.backgroundImage = 'none';
+}
+</script>
 </head>
 <body>
     <header>
         <div class="topNav">
             <a href="CreateSeries">Create series</a>
             <a href="ListSeries">List series</a>
-            <a href="ModifySeries">Modify series</a>
             <a href="CheckEmpire">Check empire</a>
+            <a href="Broadcast">Broadcast</a>
             <a href="LogOut">Log Out</a>
         </div>
   </header>

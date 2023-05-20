@@ -148,8 +148,7 @@ def CreateSeries():
         cursor = conn.cursor()
         cursor.execute(query, data)
         conn.commit()
-        return render_template("AdminPage.html")
-
+        return redirect(url_for("AdminPage"))
     else:
         return render_template("CreateSeries.html")
 
@@ -218,8 +217,6 @@ def Historic():
 def LogOut():
     session.clear()
     return render_template("index.html")
-
-
 
 if __name__ == '__main__':
     app.run()
