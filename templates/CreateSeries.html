@@ -35,7 +35,7 @@
         <input type="text" id="long_descr" name="long_descr" required><br>
 
         <label>Color of the game</label> <!-- Table series : color -->
-        <input type="color" id="color" name="color" required><br>
+        <input type="color" id="color" name="color" required onchange="updateColor(this.value)" oninput="updateColor(this.value)"><br>
 
         <label>Spawn First:</label> <!-- Table series : spawnfirst -->
         <select id="spawn_first" name="spawn_first" required> <!-- Table series : spawnfirst -->
