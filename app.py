@@ -20,12 +20,21 @@ def SignIn():
         password = request.form['password']
 
         conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306", password="graiple56laibla")
-        query ="Insert into player (uname, passwd, realname, email, showemail) VALUES (%s, %s, %s, %s, %s)"
-        data = (nickname, password, name, email, emailConfirm)
+        query= "Select * from player WHERE email=%s OR uname=%s"
+        data = (email, nickname)
         cursor = conn.cursor()
         cursor.execute(query, data)
-        conn.commit()
-        return redirect(url_for("LogIn"))
+        user = cursor.fetchone()
+        if(user == None):
+            query2 ="Insert into player (uname, passwd, realname, email, showemail) VALUES (%s, %s, %s, %s, %s)"
+            data2 = (nickname, password, name, email, emailConfirm)
+            cursor2 = conn.cursor()
+            cursor2.execute(query2, data2)
+            conn.commit()
+            return redirect(url_for("LogIn"))
+        else:
+            error = "Username or email already used"
+            return render_template("SignIn.html", error=error)
     else:
         return render_template("SignIn.html")
 
@@ -294,7 +303,16 @@ def RespawnSeries(sid):
     cursor2.execute(query2,data2)
     conn.commit()
     return redirect(url_for("ListSeries"))
-
+@app.route("/KillSerie/<sid>")
+def KillSerie(sid):
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "DELETE FROM series WHERE sid= %s"
+    data= (sid,)
+    cursor = conn.cursor()
+    cursor.execute(query, data)
+    conn.commit()
+    return redirect(url_for("ListSeries"))
 @app.route("/Broadcast", methods=['GET', 'POST'])
 def Broadcast():
     if request.method=='POST':
@@ -311,7 +329,14 @@ def Broadcast():
         conn.commit()
         return redirect(url_for("AdminPage"))
     else:
-        return render_template("BroadCast.html")
+        conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                                password="graiple56laibla")
+        query ="SELECT COUNT(*) FROM player"
+        cursor = conn.cursor()
+        cursor.execute(query)
+        nbrPlayer = cursor.fetchone()[0]
+
+        return render_template("BroadCast.html", nbrPlayer= nbrPlayer)
 @app.route("/CheckEmpire")
 def CheckEmpire():
     conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",

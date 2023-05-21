@@ -40,6 +40,10 @@
         <p id="error" style="color: red; display: none;">Password doesn't match twice.</p>
 
         <input type="submit" value="Sign in" onclick="return validatePassword()">
+        {% if error %}
+        <p style="color: red; text-align: center">{{ error }}</p>
+        {% endif %}
     </form>
+
 </body>
 </html>
