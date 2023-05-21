@@ -460,7 +460,15 @@ def JoinGame(gid):
 
 @app.route("/YourGames", methods=['GET', 'POST'])
 def YourGames():
-    return render_template("YourGames.html")
+    user = session['User']
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query="SELECT * FROM game JOIN usergame on game.gid = usergame.gid WHERE pid=%s"
+    data =(user[0],)
+    cursor = conn.cursor()
+    cursor.execute(query, data)
+    games = cursor.fetchall()
+    return render_template("YourGames.html", games=games)
 
 @app.route("/NewGame", methods=['GET', 'POST'])
 def NewGame():

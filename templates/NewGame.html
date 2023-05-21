@@ -17,7 +17,21 @@
             <a href="Historic">Historic</a>
             <a href="LogOut">Log Out</a>
         </div>
-  </header>
-
+    </header>
+    <table class="table">
+        <tr>
+            <th>Id series</th>
+            <th>Serie Name</th>
+            <th>Description</th>
+        </tr>
+        {% for cell in series %}
+            <tr>
+                <td>{{ cell[0] }}</td> <!-- Id -->
+                <td>{{ cell[1] }}</td> <!-- Serie name -->
+                <td>{{ cell[3] }}</td> <!-- Description -->
+                <td><a style="color: greenyellow" href="CreateGame/{{ cell[0] }}">Create game</a></td>
+            </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>
