@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View game</title>
+    <link rel="stylesheet" href="/static/CSS/StellarCrisis.css">
+</head>
+<body>
+    <header>
+        <div class="topNav">
+            <a href="CreateSeries">Create series</a>
+            <a href="ListSeries">List series</a>
+            <a href="ViewGame">View Game</a>
+            <a href="CheckEmpire">Check empire</a>
+            <a href="Broadcast">Broadcast</a>
+            <a href="LoginMessage">Login Message</a>
+            <a href="LogOut">Log Out</a>
+        </div>
+    </header>
+    <h1 style="text-align: center">View games</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>System game id</th>
+                <th>Id game</th>
+                <th>Name</th>
+                <th>Mineral</th>
+                <th>Fuel</th>
+                <th>Average</th>
+                <th>Population</th>
+                <th>Maximum population</th>
+                <th>Owner</th>
+                <th>Home</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for game_row in game_data %}
+            <tr>
+                <td>{{ game_row[0] }}</td>
+                <td>{{ game_row[1] }}</td>
+                <td>{{ game_row[2] }}</td>
+                <td>{{ game_row[3] }}</td>
+                <td>{{ game_row[4] }}</td>
+                <td>{{ game_row[5] }}</td>
+                <td>{{ game_row[6] }}</td>
+                <td>{{ game_row[9] }}</td>
+                <td>{{ game_row[10] }}</td>
+                <td>{{ game_row[11] }}</td>
+                <td><a style="color: red" href="KillGame/{{ game_row[1] }}">Kill game</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

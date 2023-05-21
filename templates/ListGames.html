@@ -18,13 +18,20 @@
             <a href="LogOut">Log Out</a>
         </div>
     </header>
-
-    <ul>
-        {% for game in games %}
-        <li><a href="/partie/{{ game.gid }}">{{ game.name }}</a></li>
-        {% endfor %}
-    </ul>
-
-
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Serie Id</th>
+        <th>Number of player</th>
+    </tr>
+    {% for cell in games %}
+        <tr>
+            <td>{{ cell[0] }}</td> <!-- Id -->
+            <td>{{ cell[1] }}</td> <!-- Serie id -->
+            <td>{{ cell[3] }}</td> <!-- Nbr player -->
+            <td><a style="color: greenyellow" href="JoinGame/{{ cell[0] }}">Join game</a></td>
+        </tr>
+    {% endfor %}
+</table>
 </body>
 </html>

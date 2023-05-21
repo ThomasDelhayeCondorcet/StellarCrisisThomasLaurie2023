@@ -430,22 +430,33 @@ def UserPage():
     cursor.execute(query)
     logmsg = cursor.fetchone()[0]
     return render_template("UserPage.html", Broadcast=Broadcast, logmsg=logmsg)
-@app.route("/ListGames", methods=['GET', 'POST'])
+@app.route("/ListGames")
 def ListGames():
-    if request.method == 'POST':
-        return render_template("ListGames.html")
-    else:
-
         conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
                             password="graiple56laibla")
-        query = "SELECT * FROM game Join series ON game.sid = series.sid"
+        query = "SELECT * FROM game order by gid"
         cursor = conn.cursor()
         cursor.execute(query)
         games = cursor.fetchall()
-        cursor.close()
-        conn.close()
-        return render_template("ListGames.html")
+        return render_template("ListGames.html", games=games)
+@app.route("/JoinGame/<gid>")
+def JoinGame(gid):
+    user = session["User"]
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "Insert into usergame (pid, gid) VALUES (%s, %s)"
+    data = (user[0], gid)
+    cursor = conn.cursor()
+    cursor.execute(query,data)
+    cursor.close()
 
+    query2="Update game set fullgame = fullgame + 1 Where gid = %s"
+    data2=(gid,)
+    cursor2=conn.cursor()
+    cursor2.execute(query2,data2)
+    conn.commit()
+
+    return redirect(url_for("UserPage"))
 
 @app.route("/YourGames", methods=['GET', 'POST'])
 def YourGames():
@@ -453,7 +464,58 @@ def YourGames():
 
 @app.route("/NewGame", methods=['GET', 'POST'])
 def NewGame():
-    return render_template("NewGame.html")
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "SELECT * FROM series WHERE count < max "
+    cursor = conn.cursor()
+    cursor.execute(query)
+    series = cursor.fetchall()
+    return render_template("NewGame.html", series=series)
+@app.route("/CreateGame/<sid>")
+def CreateGame(sid):
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "Select * from series WHERE sid=%s"
+    data = (sid,)
+    cursor = conn.cursor()
+    cursor.execute(query,data)
+    serie= cursor.fetchone()
+    cursor.close()
+
+    query2= "INSERT into game (sid, gnumber, ufirst, ulast, utime, sadd, avgag, avgmin, avgfuel, bridier) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+    data2= (sid, serie[6], serie[17], serie[18], serie[13], serie[52], serie[41], serie[42], serie[43], serie[12])
+    cursor2 = conn.cursor()
+    cursor2.execute(query2,data2)
+    conn.commit()
+    cursor2.close()
+
+    query3 = "Update series SET count =%s Where sid =%s"
+    data3 = (serie[6]+1,sid)
+    cursor3=conn.cursor()
+    cursor3.execute(query3,data3)
+    conn.commit()
+
+    return redirect(url_for("UserPage"))
+@app.route("/ViewGame")
+def ViewGame():
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM systemgame')
+    game_data = cursor.fetchall()
+    conn.close()
+    return render_template('ViewGame.html', game_data=game_data)
+
+@app.route("/KillGame/<gid>")
+def KillGame(gid):
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "DELETE FROM game WHERE gid= %s"
+    data= (gid,)
+    cursor = conn.cursor()
+    cursor.execute(query, data)
+    conn.commit()
+    return redirect(url_for("ViewGame"))
 
 @app.route("/OpenGames", methods=['GET', 'POST'])
 def OpenGames():
