@@ -69,7 +69,13 @@ def LogIn():
 def AdminPage():
     user = session["User"]
     Broadcast = user[19]
-    return render_template("AdminPage.html", Broadcast=Broadcast)
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "Select * From param"
+    cursor = conn.cursor()
+    cursor.execute(query)
+    logmsg = cursor.fetchone()[0]
+    return render_template("AdminPage.html", Broadcast=Broadcast, logmsg=logmsg)
 @app.route("/CreateSeries", methods=['GET', 'POST'])
 def CreateSeries():
     if request.method == 'POST':
@@ -337,6 +343,20 @@ def Broadcast():
         nbrPlayer = cursor.fetchone()[0]
 
         return render_template("BroadCast.html", nbrPlayer= nbrPlayer)
+@app.route("/LoginMessage", methods=['GET', 'POST'])
+def LoginMessage():
+    if request.method=='POST':
+        message = request.form['message']
+        conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                                password="graiple56laibla")
+        query = "UPDATE param SET loginmsg = %s"
+        data = (message,)
+        cursor = conn.cursor()
+        cursor.execute(query, data)
+        conn.commit()
+        return redirect(url_for("AdminPage"))
+    else:
+        return render_template("LoginMessage.html")
 @app.route("/CheckEmpire")
 def CheckEmpire():
     conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
@@ -403,7 +423,13 @@ def KillEmpire(pid):
 def UserPage():
     user = session["User"]
     Broadcast = user[19]
-    return render_template("UserPage.html", Broadcast=Broadcast)
+    conn = psycopg2.connect(host="student.endor.be", port="5433", database="py2306", user="py2306",
+                            password="graiple56laibla")
+    query = "Select * From param"
+    cursor = conn.cursor()
+    cursor.execute(query)
+    logmsg = cursor.fetchone()[0]
+    return render_template("UserPage.html", Broadcast=Broadcast, logmsg=logmsg)
 @app.route("/ListGames", methods=['GET', 'POST'])
 def ListGames():
     if request.method == 'POST':

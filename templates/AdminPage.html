@@ -12,11 +12,12 @@
             <a href="ListSeries">List series</a>
             <a href="CheckEmpire">Check empire</a>
             <a href="Broadcast">Broadcast</a>
+            <a href="LoginMessage">Login Message</a>
             <a href="LogOut">Log Out</a>
         </div>
     </header>
     <div class="center">
-        <h1>Welcome to your Admin page </h1>
+        <h1>{{ logmsg }}</h1>
         {% if Broadcast %}
             <p style="text-align: center">{{ Broadcast }}</p>
         {% endif %}
